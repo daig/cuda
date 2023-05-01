@@ -1,13 +1,52 @@
 #include <iostream>
-#include <cuda.h>
 #define N 10000000
 
-__global__ void vector_add(float *out, float *a, float *b, int n) {
-    for (int i = 0; i < n; i++){ out[i] = a[i] + b[i]; }
+using namespace std;
+
+__global__ void add(int *a, int *b, int *c) {
+    int tid = blockIdx.x * blockDim.x + threadIdx.x;
+    if (tid < N) { c[tid] = a[tid] + b[tid]; }
 }
+
 
 int main() {
-    CUcontext* ctx;
-    cuCxtCreate(ctx, 0, 0);
+    int *a, *b, *c;
+    int *d_a, *d_b, *d_c;
+    int size = N * sizeof(int);
+
+    cudaMalloc((void **) &d_a, size);
+    cudaMalloc((void **) &d_b, size);
+    cudaMalloc((void **) &d_c, size);
+
+    a = (int *) malloc(size);
+    b = (int *) malloc(size);
+    c = (int *) malloc(size);
+
+    for (int i = 0; i < N; i++) {
+        a[i] = i;
+        b[i] = i;
+    }
+
+    cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, b, size, cudaMemcpyHostToDevice);
+
+    add<<<(N + 255) / 256, 256>>>(d_a, d_b, d_c);
+
+    cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost);
+
+    for (int i = 0; i < N; i++) {
+        cout << c[i] << endl;
+    }
+
+    free(a);
+    free(b);
+    free(c);
+
+    cudaFree(d_a);
+    cudaFree(d_b);
+    cudaFree(d_c);
+
+    return 0;
 
 }
+
