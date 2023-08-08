@@ -1,8 +1,12 @@
 #pragma once
 #include <string>
+#include <iostream>
+using namespace std;
 namespace cuda {
 
-enum class result_t {
+struct result_t {
+
+enum class e : unsigned int {
     success = 0,
     invalid_value = 1,
     out_of_memory = 2,
@@ -98,15 +102,21 @@ enum class result_t {
     unknown = 999
 };
 
-namespace result {
-inline auto name(result_t r){
-    const char* s;
-    cuGetErrorName(static_cast<CUresult>(r), &s);
-    return std::string(s); }
+    e data;
+    result_t(result_t::e data) : data(data) {}
+    bool operator==(result_t::e other) const { return data == other; }
 
-inline std::string string(result_t r){
-    const char* s;
-    cuGetErrorString(static_cast<CUresult>(r), &s);
-    return std::string(s); }
-} // namespace result
+    string name() const {
+        const char* s;
+        cuGetErrorName(static_cast<CUresult>(data), &s);
+        return string(s); }
+
+    string description() const {
+        const char* s;
+        cuGetErrorString(static_cast<CUresult>(data), &s);
+        return string(s); }
+ friend ostream& operator<<(ostream& os, const cuda::result_t& r){
+    return os << r.name() << ": " << r.description(); }
+}; 
 } // namespace cuda
+

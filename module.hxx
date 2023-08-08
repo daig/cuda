@@ -1,63 +1,82 @@
 #pragma once
 #include <vector>
 #include <cassert>
+#include "jit_options.hxx"
+#include "dev_ptr.hxx"
 using std::vector;
+
 
 namespace cuda {
     struct modul {
-        CUmodule raw;
-        modul(const char* fn){ cuModuleLoad(&raw, fn); }
-        modul(const void* image){ cuModuleLoadData(&raw, image); }
+        CUmodule data;
+        modul(CUmodule m) : data(m) {}
+        modul(const std::string fn){ cuModuleLoad(&data, fn.c_str() ); }
+        modul(const vector<unsigned char> image){ cuModuleLoadData(&data, image.data()); }
+        ~modul(){ cuModuleUnload(data); }
 
         enum class loading_mode { eager = 1, lazy = 2, };
 
-        enum class jit_option {
-            max_registers = 0,
-            threads_per_block = 1,
-            wall_time = 2,
-            info_log_buffer = 3,
-            info_log_buffer_size_bytes = 4,
-            error_log_buffer = 5,
-            error_log_buffer_size_bytes = 6,
-            optimization_level = 7,
-            target_from_current_context = 8,
-            jit_target = 9,
-            fallback_strategy = 10,
-            generate_debug_info = 11,
-            log_verbose = 12,
-            generate_line_info = 13,
-            cache_mode = 14,
-            fast_compile = 16,
-            global_symbol_names = 17,
-            global_symbol_addresses = 18,
-            global_symbol_count = 19,
-            pic = 30,
-        };
-        struct option_list {
-            vector<jit_option> options;
-            vector<void*> values;
-            option_list& add(jit_option o, void* v) {
-                options.push_back(o);
-                values.push_back(v);
-                return *this; }
-            size_t size() const { return options.size(); }
-
-            inline option_list& max_registers(unsigned int& v) { return add(jit_option::max_registers, (void*)&v); }
-            inline option_list& threads_per_block(unsigned int& v) { return add(jit_option::threads_per_block, (void*)&v); }
-            inline option_list& wall_time(float& v) { return add(jit_option::wall_time, (void*)&v); }
-            inline option_list& info_log_buffer(char(&v)[]) { return add(jit_option::info_log_buffer, (void*)&v); }
-            inline option_list& info_log_buffer_size_bytes(size_t& v) { return add(jit_option::info_log_buffer_size_bytes, (void*)&v); }
-
-        };
-        modul(const void* image, option_list& o) {
-            result_t r = static_cast<result_t>(cuModuleLoadDataEx(&raw, image, o.size(), reinterpret_cast<CUjit_option*>(o.options.data()), o.values.data())); 
-            std::cout << "cuModuleLoadDataEx: " << cuda::result::string(r) << std::endl;
+        modul(const void* image, jit::option_list& o) {
+            result_t r = static_cast<result_t::e>(cuModuleLoadDataEx(&data, image, o.size(), reinterpret_cast<CUjit_option*>(o.options.data()), o.values.data())); 
+            std::cout << "cuModuleLoadDataEx: " << r << std::endl;
         }
 
-        auto get_function(const char* name) {
+        CUfunction get_function(const std::string name) {
             CUfunction f;
-            result_t r = static_cast<result_t>(cuModuleGetFunction(&f, raw, name));
-            std::cout << "cuModuleGetFunction: " << cuda::result::string(r) << std::endl;
+            result_t r = static_cast<result_t::e>(cuModuleGetFunction(&f, data, name.c_str()));
+            std::cout << "cuModuleGetFunction: " << r << std::endl;
             return f; }
+        std::pair<dev_ptr,size_t> get_global(const std::string name) {
+            CUdeviceptr p; size_t s;
+            result_t r = static_cast<result_t::e>(cuModuleGetGlobal(&p, &s, data, name.c_str()));
+            std::cout << "cuModuleGetGlobal: " << r << std::endl;
+            return std::make_pair(p, s); }
+        auto get_loading_mode() {
+            CUmoduleLoadingMode m;
+            result_t r = static_cast<result_t::e>(cuModuleGetLoadingMode(&m));
+            std::cout << "cuModuleGetGlobal: " << r << std::endl;
+            return static_cast<loading_mode>(m); }
+
+    enum class jit_input { cubin = 0, ptx = 1, fatbinary = 2, object = 3, library = 4, nvvm = 5, };
+
+    struct link_state {
+        CUlinkState data;
+        link_state() { cuLinkCreate(0, nullptr, nullptr, &data); }
+        link_state(jit::option_list& o) {
+            result_t r = static_cast<result_t::e>(cuLinkCreate(o.size(), reinterpret_cast<CUjit_option*>(o.options.data()), o.values.data(), &data));
+            std::cout << "cuLinkCreate: " << r << std::endl;
+        }
+        ~link_state() { cuLinkDestroy(data); }
+        void add_ptx(const std::string ptx, jit::option_list& o, const char* name = nullptr) {
+            result_t r = static_cast<result_t::e>
+                (cuLinkAddData(data
+                              ,CUjitInputType::CU_JIT_INPUT_PTX
+                              ,const_cast<void*>(static_cast<const void*>(ptx.c_str()))
+                              ,ptx.size()
+                              ,name
+                              ,o.size()
+                              ,reinterpret_cast<CUjit_option*>(o.options.data())
+                              ,o.values.data()));
+            std::cout << "cuLinkAddData: " << r << std::endl;
+        }
+        void add_file(const char* fn, jit_input t, jit::option_list& o) {
+            result_t r = static_cast<result_t::e>
+                (cuLinkAddFile(data
+                              ,static_cast<CUjitInputType>(t)
+                              ,fn
+                              ,o.size()
+                              ,reinterpret_cast<CUjit_option*>(o.options.data())
+                              ,o.values.data())
+                );
+            std::cout << "cuLinkAddFile: " << r << std::endl;
+        }
+        vector<unsigned char> complete() {
+            size_t s;
+            void* cubin;
+            result_t r = static_cast<result_t::e>(cuLinkComplete(data, &cubin, &s));
+            std::cout << "cuLinkComplete: " << r << std::endl;
+            return vector<unsigned char>(static_cast<unsigned char*>(cubin), static_cast<unsigned char*>(cubin) + s); }
+        };
+
     };
 }

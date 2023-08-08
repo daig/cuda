@@ -1,11 +1,27 @@
 #pragma once
+#include <cassert>
 //#include "device_attribute.hxx"
+
 namespace cuda {
 
 struct device_t {
     CUdevice raw;
-    static inline device_t get(int ordinal) { device_t d; cuDeviceGet(&d.raw, ordinal); return d; } // TODO: errors
-    static inline int count() { int count; cuDeviceGetCount(&count); return count; } // TODO: errors
+    device_t(size_t ordinal) { cuDeviceGet(&raw, ordinal); }
+    device_t(std::string pciBusId) { cuDeviceGetByPCIBusId(&raw, pciBusId.c_str()); }
+    static inline size_t count() { int count; cuDeviceGetCount(&count); return count; }
+    static inline vector<device_t> all() {
+        size_t n = count();
+        vector<device_t> result; result.reserve(n);
+        for (size_t i = 0; i < n; ++i) { result.emplace_back(i); }
+        return result;
+    }
+    bool operator==(const device_t& other) const { return raw == other.raw; }
+                                                                                     
+
+    std::string pci_bus_id() const {
+        char r[16];
+        cuDeviceGetPCIBusId(r, 16, raw);
+        return std::string(r); }
 
     using uuid_t = CUuuid;
     enum class attribute {
@@ -29,15 +45,15 @@ struct device_t {
         integrated = 18,
         can_map_host_memory = 19,
         compute_mode = 20,
-        maximum_texture1d_width = 21,
-        maximum_texture2d_width = 22,
-        maximum_texture2d_height = 23,
-        maximum_texture3d_width = 24,
-        maximum_texture3d_height = 25,
-        maximum_texture3d_depth = 26,
-        maximum_texture2d_layered_width = 27,
-        maximum_texture2d_layered_height = 28,
-        maximum_texture2d_layered_layers = 29,
+        max_texture1d_width = 21,
+        max_texture2d_width = 22,
+        max_texture2d_height = 23,
+        max_texture3d_width = 24,
+        max_texture3d_height = 25,
+        max_texture3d_depth = 26,
+        max_texture2d_layered_width = 27,
+        max_texture2d_layered_height = 28,
+        max_texture2d_layered_layers = 29,
         surface_alignment = 30,
         concurrent_kernels = 31,
         ecc_enabled = 32,
@@ -50,40 +66,40 @@ struct device_t {
         max_threads_per_multiprocessor = 39,
         async_engine_count = 40,
         unified_addressing = 41,
-        maximum_texture1d_layered_width = 42,
-        maximum_texture1d_layered_layers = 43,
-        maximum_texture2d_gather_width = 45,
-        maximum_texture2d_gather_height = 46,
-        maximum_texture3d_width_alternate = 47,
-        maximum_texture3d_height_alternate = 48,
-        maximum_texture3d_depth_alternate = 49,
+        max_texture1d_layered_width = 42,
+        max_texture1d_layered_layers = 43,
+        max_texture2d_gather_width = 45,
+        max_texture2d_gather_height = 46,
+        max_texture3d_width_alternate = 47,
+        max_texture3d_height_alternate = 48,
+        max_texture3d_depth_alternate = 49,
         pci_domain_id = 50,
         texture_pitch_alignment = 51,
-        maximum_texturecubemap_width = 52,
-        maximum_texturecubemap_layered_width = 53,
-        maximum_texturecubemap_layered_layers = 54,
-        maximum_surface1d_width = 55,
-        maximum_surface2d_width = 56,
-        maximum_surface2d_height = 57,
-        maximum_surface3d_width = 58,
-        maximum_surface3d_height = 59,
-        maximum_surface3d_depth = 60,
-        maximum_surface1d_layered_width = 61,
-        maximum_surface1d_layered_layers = 62,
-        maximum_surface2d_layered_width = 63,
-        maximum_surface2d_layered_height = 64,
-        maximum_surface2d_layered_layers = 65,
-        maximum_surfacecubemap_width = 66,
-        maximum_surfacecubemap_layered_width = 67,
-        maximum_surfacecubemap_layered_layers = 68,
-        maximum_texture2d_linear_width = 70,
-        maximum_texture2d_linear_height = 71,
-        maximum_texture2d_linear_pitch = 72,
-        maximum_texture2d_mipmapped_width = 73,
-        maximum_texture2d_mipmapped_height = 74,
+        max_texturecubemap_width = 52,
+        max_texturecubemap_layered_width = 53,
+        max_texturecubemap_layered_layers = 54,
+        max_surface1d_width = 55,
+        max_surface2d_width = 56,
+        max_surface2d_height = 57,
+        max_surface3d_width = 58,
+        max_surface3d_height = 59,
+        max_surface3d_depth = 60,
+        max_surface1d_layered_width = 61,
+        max_surface1d_layered_layers = 62,
+        max_surface2d_layered_width = 63,
+        max_surface2d_layered_height = 64,
+        max_surface2d_layered_layers = 65,
+        max_surfacecubemap_width = 66,
+        max_surfacecubemap_layered_width = 67,
+        max_surfacecubemap_layered_layers = 68,
+        max_texture2d_linear_width = 70,
+        max_texture2d_linear_height = 71,
+        max_texture2d_linear_pitch = 72,
+        max_texture2d_mipmapped_width = 73,
+        max_texture2d_mipmapped_height = 74,
         compute_capability_major = 75,
         compute_capability_minor = 76,
-        maximum_texture1d_mipmapped_width = 77,
+        max_texture1d_mipmapped_width = 77,
         stream_priorities_supported = 78,
         global_l1_cache_supported = 79,
         local_l1_cache_supported = 80,
