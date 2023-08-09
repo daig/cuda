@@ -658,7 +658,9 @@ ___device__(static  __no_sc__) __inline__ enum cudaError _ZN37_INTERNAL_2b28230e
 #endif
 # 3634 "/usr/local/cuda/bin/../targets/x86_64-linux/include/crt/device_functions.h"
 ___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
-# 6 "test.cu"
+# 730 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime.h"
+___device__(static  __no_sc__) __inline__ enum cudaError _ZN37_INTERNAL_2b28230e_7_test_cu_00197a2110cudaMallocIiEE9cudaErrorPPT_m(int **, size_t);
+# 7 "test.cu"
 __global__ __var_used__ extern void _Z3addPiS_S_(int *, int *, int *);
 #include "common_functions.h"
 #if !defined(__CUDABE__)
@@ -882,27 +884,40 @@ return ((__T0 = devPtr) , (void)(__T1 = size)) , (__cudaCDP2Malloc(__T0, __T1));
 #endif
 #if !defined(__CUDABE__)
 #endif
-# 6 "test.cu"
+# 730 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime.h"
+___device__(static  __no_sc__) __inline__ enum cudaError _ZN37_INTERNAL_2b28230e_7_test_cu_00197a2110cudaMallocIiEE9cudaErrorPPT_m(
+# 731 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime.h"
+int **devPtr, 
+# 732 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime.h"
+size_t size){
+# 734 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime.h"
+{  void **__T2;
+ size_t __T3;
+# 735 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime.h"
+return ((__T2 = ((void **)((void *)devPtr))) , (void)(__T3 = size)) , (_ZN37_INTERNAL_2b28230e_7_test_cu_00197a2110cudaMallocEPPvm(__T2, __T3));
+# 736 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime.h"
+}}
+# 7 "test.cu"
 __global__ __var_used__ void _Z3addPiS_S_(
-# 6 "test.cu"
+# 7 "test.cu"
 int *a, 
-# 6 "test.cu"
+# 7 "test.cu"
 int *b, 
-# 6 "test.cu"
+# 7 "test.cu"
 int *c){
-# 6 "test.cu"
-{
 # 7 "test.cu"
- int __cuda_local_var_56381_9_non_const_tid;
-# 7 "test.cu"
-__cuda_local_var_56381_9_non_const_tid = ((int)(((blockIdx.x) * (blockDim.x)) + (threadIdx.x)));
-# 8 "test.cu"
-if (__cuda_local_var_56381_9_non_const_tid < 10000000)
-# 8 "test.cu"
 {
 # 8 "test.cu"
-(c[__cuda_local_var_56381_9_non_const_tid]) = ((a[__cuda_local_var_56381_9_non_const_tid]) + (b[__cuda_local_var_56381_9_non_const_tid]));
+ int __cuda_local_var_60160_9_non_const_tid;
 # 8 "test.cu"
-} 
+__cuda_local_var_60160_9_non_const_tid = ((int)(((blockIdx.x) * (blockDim.x)) + (threadIdx.x)));
 # 9 "test.cu"
+if (__cuda_local_var_60160_9_non_const_tid < 10000000)
+# 9 "test.cu"
+{
+# 9 "test.cu"
+(c[__cuda_local_var_60160_9_non_const_tid]) = ((a[__cuda_local_var_60160_9_non_const_tid]) + (b[__cuda_local_var_60160_9_non_const_tid]));
+# 9 "test.cu"
+} 
+# 10 "test.cu"
 }}

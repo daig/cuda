@@ -1,4 +1,5 @@
 #include <iostream>
+// nvcc -keep -keep-dir test_output test0.cu
 #define N 10000000
 
 using namespace std;
@@ -14,9 +15,9 @@ int main() {
     int *d_a, *d_b, *d_c;
     int size = N * sizeof(int);
 
-    cudaMalloc((void **) &d_a, size);
-    cudaMalloc((void **) &d_b, size);
-    cudaMalloc((void **) &d_c, size);
+    cudaMalloc((int **) &d_a, size);
+    cudaMalloc((int **) &d_b, size);
+    cudaMalloc((int **) &d_c, size);
 
     a = (int *) malloc(size);
     b = (int *) malloc(size);

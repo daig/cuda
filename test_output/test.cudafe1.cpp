@@ -56776,77 +56776,4071 @@ extern wostream wclog;
 static ios_base::Init __ioinit; 
 # 77
 }
-# 4 "test.cu"
+# 62 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef uint32_t cuuint32_t; 
+# 63
+typedef uint64_t cuuint64_t; 
+# 244 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+extern "C" {
+# 252
+typedef unsigned long long CUdeviceptr_v2; 
+# 256
+typedef CUdeviceptr_v2 CUdeviceptr; 
+# 258
+typedef int CUdevice_v1; 
+# 259
+typedef CUdevice_v1 CUdevice; 
+# 260
+typedef struct CUctx_st *CUcontext; 
+# 261
+typedef struct CUmod_st *CUmodule; 
+# 262
+typedef CUfunc_st *CUfunction; 
+# 263
+typedef struct CUlib_st *CUlibrary; 
+# 264
+typedef CUkern_st *CUkernel; 
+# 265
+typedef struct CUarray_st *CUarray; 
+# 266
+typedef struct CUmipmappedArray_st *CUmipmappedArray; 
+# 267
+typedef struct CUtexref_st *CUtexref; 
+# 268
+typedef struct CUsurfref_st *CUsurfref; 
+# 269
+typedef CUevent_st *CUevent; 
+# 270
+typedef CUstream_st *CUstream; 
+# 271
+typedef struct CUgraphicsResource_st *CUgraphicsResource; 
+# 272
+typedef unsigned long long CUtexObject_v1; 
+# 273
+typedef CUtexObject_v1 CUtexObject; 
+# 274
+typedef unsigned long long CUsurfObject_v1; 
+# 275
+typedef CUsurfObject_v1 CUsurfObject; 
+# 276
+typedef struct CUextMemory_st *CUexternalMemory; 
+# 277
+typedef struct CUextSemaphore_st *CUexternalSemaphore; 
+# 278
+typedef CUgraph_st *CUgraph; 
+# 279
+typedef CUgraphNode_st *CUgraphNode; 
+# 280
+typedef CUgraphExec_st *CUgraphExec; 
+# 281
+typedef CUmemPoolHandle_st *CUmemoryPool; 
+# 282
+typedef CUuserObject_st *CUuserObject; 
+# 301 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 299
+struct CUipcEventHandle_st { 
+# 300
+char reserved[64]; 
+# 301
+} CUipcEventHandle_v1; 
+# 302
+typedef CUipcEventHandle_v1 CUipcEventHandle; 
+# 309
+typedef 
+# 307
+struct CUipcMemHandle_st { 
+# 308
+char reserved[64]; 
+# 309
+} CUipcMemHandle_v1; 
+# 310
+typedef CUipcMemHandle_v1 CUipcMemHandle; 
+# 317
+typedef 
+# 315
+enum CUipcMem_flags_enum { 
+# 316
+CU_IPC_MEM_LAZY_ENABLE_PEER_ACCESS = 1
+# 317
+} CUipcMem_flags; 
+# 327
+typedef 
+# 323
+enum CUmemAttach_flags_enum { 
+# 324
+CU_MEM_ATTACH_GLOBAL = 1, 
+# 325
+CU_MEM_ATTACH_HOST, 
+# 326
+CU_MEM_ATTACH_SINGLE = 4
+# 327
+} CUmemAttach_flags; 
+# 349
+typedef 
+# 332
+enum CUctx_flags_enum { 
+# 333
+CU_CTX_SCHED_AUTO, 
+# 334
+CU_CTX_SCHED_SPIN, 
+# 335
+CU_CTX_SCHED_YIELD, 
+# 336
+CU_CTX_SCHED_BLOCKING_SYNC = 4, 
+# 337
+CU_CTX_BLOCKING_SYNC = 4, 
+# 340
+CU_CTX_SCHED_MASK = 7, 
+# 341
+CU_CTX_MAP_HOST, 
+# 344
+CU_CTX_LMEM_RESIZE_TO_MAX = 16, 
+# 345
+CU_CTX_COREDUMP_ENABLE = 32, 
+# 346
+CU_CTX_USER_COREDUMP_ENABLE = 64, 
+# 347
+CU_CTX_SYNC_MEMOPS = 128, 
+# 348
+CU_CTX_FLAGS_MASK = 255
+# 349
+} CUctx_flags; 
+# 359
+typedef 
+# 354
+enum CUevent_sched_flags_enum { 
+# 355
+CU_EVENT_SCHED_AUTO, 
+# 356
+CU_EVENT_SCHED_SPIN, 
+# 357
+CU_EVENT_SCHED_YIELD, 
+# 358
+CU_EVENT_SCHED_BLOCKING_SYNC = 4
+# 359
+} CUevent_sched_flags; 
+# 369
+typedef 
+# 364
+enum cl_event_flags_enum { 
+# 365
+NVCL_EVENT_SCHED_AUTO, 
+# 366
+NVCL_EVENT_SCHED_SPIN, 
+# 367
+NVCL_EVENT_SCHED_YIELD, 
+# 368
+NVCL_EVENT_SCHED_BLOCKING_SYNC = 4
+# 369
+} cl_event_flags; 
+# 379
+typedef 
+# 374
+enum cl_context_flags_enum { 
+# 375
+NVCL_CTX_SCHED_AUTO, 
+# 376
+NVCL_CTX_SCHED_SPIN, 
+# 377
+NVCL_CTX_SCHED_YIELD, 
+# 378
+NVCL_CTX_SCHED_BLOCKING_SYNC = 4
+# 379
+} cl_context_flags; 
+# 388
+typedef 
+# 385
+enum CUstream_flags_enum { 
+# 386
+CU_STREAM_DEFAULT, 
+# 387
+CU_STREAM_NON_BLOCKING
+# 388
+} CUstream_flags; 
+# 418 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 413
+enum CUevent_flags_enum { 
+# 414
+CU_EVENT_DEFAULT, 
+# 415
+CU_EVENT_BLOCKING_SYNC, 
+# 416
+CU_EVENT_DISABLE_TIMING, 
+# 417
+CU_EVENT_INTERPROCESS = 4
+# 418
+} CUevent_flags; 
+# 428
+typedef 
+# 423
+enum CUevent_record_flags_enum { 
+# 424
+CU_EVENT_RECORD_DEFAULT, 
+# 425
+CU_EVENT_RECORD_EXTERNAL
+# 428
+} CUevent_record_flags; 
+# 438
+typedef 
+# 433
+enum CUevent_wait_flags_enum { 
+# 434
+CU_EVENT_WAIT_DEFAULT, 
+# 435
+CU_EVENT_WAIT_EXTERNAL
+# 438
+} CUevent_wait_flags; 
+# 461 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 443 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+enum CUstreamWaitValue_flags_enum { 
+# 444
+CU_STREAM_WAIT_VALUE_GEQ, 
+# 447
+CU_STREAM_WAIT_VALUE_EQ, 
+# 448
+CU_STREAM_WAIT_VALUE_AND, 
+# 449
+CU_STREAM_WAIT_VALUE_NOR, 
+# 452
+CU_STREAM_WAIT_VALUE_FLUSH = (1 << 30)
+# 461 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+} CUstreamWaitValue_flags; 
+# 475
+typedef 
+# 466
+enum CUstreamWriteValue_flags_enum { 
+# 467
+CU_STREAM_WRITE_VALUE_DEFAULT, 
+# 468
+CU_STREAM_WRITE_VALUE_NO_MEMORY_BARRIER
+# 475
+} CUstreamWriteValue_flags; 
+# 488
+typedef 
+# 480
+enum CUstreamBatchMemOpType_enum { 
+# 481
+CU_STREAM_MEM_OP_WAIT_VALUE_32 = 1, 
+# 482
+CU_STREAM_MEM_OP_WRITE_VALUE_32, 
+# 483
+CU_STREAM_MEM_OP_WAIT_VALUE_64 = 4, 
+# 484
+CU_STREAM_MEM_OP_WRITE_VALUE_64, 
+# 485
+CU_STREAM_MEM_OP_BARRIER, 
+# 486
+CU_STREAM_MEM_OP_FLUSH_REMOTE_WRITES = 3
+# 488
+} CUstreamBatchMemOpType; 
+# 496
+typedef 
+# 493
+enum CUstreamMemoryBarrier_flags_enum { 
+# 494
+CU_STREAM_MEMORY_BARRIER_TYPE_SYS, 
+# 495
+CU_STREAM_MEMORY_BARRIER_TYPE_GPU
+# 496
+} CUstreamMemoryBarrier_flags; 
+# 532
+typedef 
+# 501
+union CUstreamBatchMemOpParams_union { 
+# 502
+CUstreamBatchMemOpType operation; 
+# 503
+struct CUstreamMemOpWaitValueParams_st { 
+# 504
+CUstreamBatchMemOpType operation; 
+# 505
+CUdeviceptr address; 
+# 506
+union { 
+# 507
+cuuint32_t value; 
+# 508
+cuuint64_t value64; 
+# 509
+}; 
+# 510
+unsigned flags; 
+# 511
+CUdeviceptr alias; 
+# 512
+} waitValue; 
+# 513
+struct CUstreamMemOpWriteValueParams_st { 
+# 514
+CUstreamBatchMemOpType operation; 
+# 515
+CUdeviceptr address; 
+# 516
+union { 
+# 517
+cuuint32_t value; 
+# 518
+cuuint64_t value64; 
+# 519
+}; 
+# 520
+unsigned flags; 
+# 521
+CUdeviceptr alias; 
+# 522
+} writeValue; 
+# 523
+struct CUstreamMemOpFlushRemoteWritesParams_st { 
+# 524
+CUstreamBatchMemOpType operation; 
+# 525
+unsigned flags; 
+# 526
+} flushRemoteWrites; 
+# 527
+struct CUstreamMemOpMemoryBarrierParams_st { 
+# 528
+CUstreamBatchMemOpType operation; 
+# 529
+unsigned flags; 
+# 530
+} memoryBarrier; 
+# 531
+cuuint64_t pad[6]; 
+# 532
+} CUstreamBatchMemOpParams_v1; 
+# 533
+typedef CUstreamBatchMemOpParams_v1 CUstreamBatchMemOpParams; 
+# 540
+typedef 
+# 535
+struct CUDA_BATCH_MEM_OP_NODE_PARAMS_st { 
+# 536
+CUcontext ctx; 
+# 537
+unsigned count; 
+# 538
+CUstreamBatchMemOpParams *paramArray; 
+# 539
+unsigned flags; 
+# 540
+} CUDA_BATCH_MEM_OP_NODE_PARAMS; 
+# 548
+typedef 
+# 545
+enum CUoccupancy_flags_enum { 
+# 546
+CU_OCCUPANCY_DEFAULT, 
+# 547
+CU_OCCUPANCY_DISABLE_CACHING_OVERRIDE
+# 548
+} CUoccupancy_flags; 
+# 556
+typedef 
+# 553
+enum CUstreamUpdateCaptureDependencies_flags_enum { 
+# 554
+CU_STREAM_ADD_CAPTURE_DEPENDENCIES, 
+# 555
+CU_STREAM_SET_CAPTURE_DEPENDENCIES
+# 556
+} CUstreamUpdateCaptureDependencies_flags; 
+# 597
+typedef 
+# 561
+enum CUarray_format_enum { 
+# 562
+CU_AD_FORMAT_UNSIGNED_INT8 = 1, 
+# 563
+CU_AD_FORMAT_UNSIGNED_INT16, 
+# 564
+CU_AD_FORMAT_UNSIGNED_INT32, 
+# 565
+CU_AD_FORMAT_SIGNED_INT8 = 8, 
+# 566
+CU_AD_FORMAT_SIGNED_INT16, 
+# 567
+CU_AD_FORMAT_SIGNED_INT32, 
+# 568
+CU_AD_FORMAT_HALF = 16, 
+# 569
+CU_AD_FORMAT_FLOAT = 32, 
+# 570
+CU_AD_FORMAT_NV12 = 176, 
+# 571
+CU_AD_FORMAT_UNORM_INT8X1 = 192, 
+# 572
+CU_AD_FORMAT_UNORM_INT8X2, 
+# 573
+CU_AD_FORMAT_UNORM_INT8X4, 
+# 574
+CU_AD_FORMAT_UNORM_INT16X1, 
+# 575
+CU_AD_FORMAT_UNORM_INT16X2, 
+# 576
+CU_AD_FORMAT_UNORM_INT16X4, 
+# 577
+CU_AD_FORMAT_SNORM_INT8X1, 
+# 578
+CU_AD_FORMAT_SNORM_INT8X2, 
+# 579
+CU_AD_FORMAT_SNORM_INT8X4, 
+# 580
+CU_AD_FORMAT_SNORM_INT16X1, 
+# 581
+CU_AD_FORMAT_SNORM_INT16X2, 
+# 582
+CU_AD_FORMAT_SNORM_INT16X4, 
+# 583
+CU_AD_FORMAT_BC1_UNORM = 145, 
+# 584
+CU_AD_FORMAT_BC1_UNORM_SRGB, 
+# 585
+CU_AD_FORMAT_BC2_UNORM, 
+# 586
+CU_AD_FORMAT_BC2_UNORM_SRGB, 
+# 587
+CU_AD_FORMAT_BC3_UNORM, 
+# 588
+CU_AD_FORMAT_BC3_UNORM_SRGB, 
+# 589
+CU_AD_FORMAT_BC4_UNORM, 
+# 590
+CU_AD_FORMAT_BC4_SNORM, 
+# 591
+CU_AD_FORMAT_BC5_UNORM, 
+# 592
+CU_AD_FORMAT_BC5_SNORM, 
+# 593
+CU_AD_FORMAT_BC6H_UF16, 
+# 594
+CU_AD_FORMAT_BC6H_SF16, 
+# 595
+CU_AD_FORMAT_BC7_UNORM, 
+# 596
+CU_AD_FORMAT_BC7_UNORM_SRGB
+# 597
+} CUarray_format; 
+# 607
+typedef 
+# 602
+enum CUaddress_mode_enum { 
+# 603
+CU_TR_ADDRESS_MODE_WRAP, 
+# 604
+CU_TR_ADDRESS_MODE_CLAMP, 
+# 605
+CU_TR_ADDRESS_MODE_MIRROR, 
+# 606
+CU_TR_ADDRESS_MODE_BORDER
+# 607
+} CUaddress_mode; 
+# 615
+typedef 
+# 612
+enum CUfilter_mode_enum { 
+# 613
+CU_TR_FILTER_MODE_POINT, 
+# 614
+CU_TR_FILTER_MODE_LINEAR
+# 615
+} CUfilter_mode; 
+# 757
+typedef 
+# 620
+enum CUdevice_attribute_enum { 
+# 621
+CU_DEVICE_ATTRIBUTE_MAX_THREADS_PER_BLOCK = 1, 
+# 622
+CU_DEVICE_ATTRIBUTE_MAX_BLOCK_DIM_X, 
+# 623
+CU_DEVICE_ATTRIBUTE_MAX_BLOCK_DIM_Y, 
+# 624
+CU_DEVICE_ATTRIBUTE_MAX_BLOCK_DIM_Z, 
+# 625
+CU_DEVICE_ATTRIBUTE_MAX_GRID_DIM_X, 
+# 626
+CU_DEVICE_ATTRIBUTE_MAX_GRID_DIM_Y, 
+# 627
+CU_DEVICE_ATTRIBUTE_MAX_GRID_DIM_Z, 
+# 628
+CU_DEVICE_ATTRIBUTE_MAX_SHARED_MEMORY_PER_BLOCK, 
+# 629
+CU_DEVICE_ATTRIBUTE_SHARED_MEMORY_PER_BLOCK = 8, 
+# 630
+CU_DEVICE_ATTRIBUTE_TOTAL_CONSTANT_MEMORY, 
+# 631
+CU_DEVICE_ATTRIBUTE_WARP_SIZE, 
+# 632
+CU_DEVICE_ATTRIBUTE_MAX_PITCH, 
+# 633
+CU_DEVICE_ATTRIBUTE_MAX_REGISTERS_PER_BLOCK, 
+# 634
+CU_DEVICE_ATTRIBUTE_REGISTERS_PER_BLOCK = 12, 
+# 635
+CU_DEVICE_ATTRIBUTE_CLOCK_RATE, 
+# 636
+CU_DEVICE_ATTRIBUTE_TEXTURE_ALIGNMENT, 
+# 637
+CU_DEVICE_ATTRIBUTE_GPU_OVERLAP, 
+# 638
+CU_DEVICE_ATTRIBUTE_MULTIPROCESSOR_COUNT, 
+# 639
+CU_DEVICE_ATTRIBUTE_KERNEL_EXEC_TIMEOUT, 
+# 640
+CU_DEVICE_ATTRIBUTE_INTEGRATED, 
+# 641
+CU_DEVICE_ATTRIBUTE_CAN_MAP_HOST_MEMORY, 
+# 642
+CU_DEVICE_ATTRIBUTE_COMPUTE_MODE, 
+# 643
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_WIDTH, 
+# 644
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_WIDTH, 
+# 645
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_HEIGHT, 
+# 646
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_WIDTH, 
+# 647
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_HEIGHT, 
+# 648
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_DEPTH, 
+# 649
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LAYERED_WIDTH, 
+# 650
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LAYERED_HEIGHT, 
+# 651
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LAYERED_LAYERS, 
+# 652
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_ARRAY_WIDTH = 27, 
+# 653
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_ARRAY_HEIGHT, 
+# 654
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES, 
+# 655
+CU_DEVICE_ATTRIBUTE_SURFACE_ALIGNMENT, 
+# 656
+CU_DEVICE_ATTRIBUTE_CONCURRENT_KERNELS, 
+# 657
+CU_DEVICE_ATTRIBUTE_ECC_ENABLED, 
+# 658
+CU_DEVICE_ATTRIBUTE_PCI_BUS_ID, 
+# 659
+CU_DEVICE_ATTRIBUTE_PCI_DEVICE_ID, 
+# 660
+CU_DEVICE_ATTRIBUTE_TCC_DRIVER, 
+# 661
+CU_DEVICE_ATTRIBUTE_MEMORY_CLOCK_RATE, 
+# 662
+CU_DEVICE_ATTRIBUTE_GLOBAL_MEMORY_BUS_WIDTH, 
+# 663
+CU_DEVICE_ATTRIBUTE_L2_CACHE_SIZE, 
+# 664
+CU_DEVICE_ATTRIBUTE_MAX_THREADS_PER_MULTIPROCESSOR, 
+# 665
+CU_DEVICE_ATTRIBUTE_ASYNC_ENGINE_COUNT, 
+# 666
+CU_DEVICE_ATTRIBUTE_UNIFIED_ADDRESSING, 
+# 667
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_LAYERED_WIDTH, 
+# 668
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_LAYERED_LAYERS, 
+# 669
+CU_DEVICE_ATTRIBUTE_CAN_TEX2D_GATHER, 
+# 670
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_GATHER_WIDTH, 
+# 671
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_GATHER_HEIGHT, 
+# 672
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE, 
+# 673
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE, 
+# 674
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE, 
+# 675
+CU_DEVICE_ATTRIBUTE_PCI_DOMAIN_ID, 
+# 676
+CU_DEVICE_ATTRIBUTE_TEXTURE_PITCH_ALIGNMENT, 
+# 677
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURECUBEMAP_WIDTH, 
+# 678
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH, 
+# 679
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS, 
+# 680
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE1D_WIDTH, 
+# 681
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_WIDTH, 
+# 682
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_HEIGHT, 
+# 683
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE3D_WIDTH, 
+# 684
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE3D_HEIGHT, 
+# 685
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE3D_DEPTH, 
+# 686
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE1D_LAYERED_WIDTH, 
+# 687
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE1D_LAYERED_LAYERS, 
+# 688
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_LAYERED_WIDTH, 
+# 689
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_LAYERED_HEIGHT, 
+# 690
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_LAYERED_LAYERS, 
+# 691
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACECUBEMAP_WIDTH, 
+# 692
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH, 
+# 693
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS, 
+# 694
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_LINEAR_WIDTH, 
+# 695
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LINEAR_WIDTH, 
+# 696
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LINEAR_HEIGHT, 
+# 697
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LINEAR_PITCH, 
+# 698
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH, 
+# 699
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT, 
+# 700
+CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MAJOR, 
+# 701
+CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MINOR, 
+# 702
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH, 
+# 703
+CU_DEVICE_ATTRIBUTE_STREAM_PRIORITIES_SUPPORTED, 
+# 704
+CU_DEVICE_ATTRIBUTE_GLOBAL_L1_CACHE_SUPPORTED, 
+# 705
+CU_DEVICE_ATTRIBUTE_LOCAL_L1_CACHE_SUPPORTED, 
+# 706
+CU_DEVICE_ATTRIBUTE_MAX_SHARED_MEMORY_PER_MULTIPROCESSOR, 
+# 707
+CU_DEVICE_ATTRIBUTE_MAX_REGISTERS_PER_MULTIPROCESSOR, 
+# 708
+CU_DEVICE_ATTRIBUTE_MANAGED_MEMORY, 
+# 709
+CU_DEVICE_ATTRIBUTE_MULTI_GPU_BOARD, 
+# 710
+CU_DEVICE_ATTRIBUTE_MULTI_GPU_BOARD_GROUP_ID, 
+# 711
+CU_DEVICE_ATTRIBUTE_HOST_NATIVE_ATOMIC_SUPPORTED, 
+# 712
+CU_DEVICE_ATTRIBUTE_SINGLE_TO_DOUBLE_PRECISION_PERF_RATIO, 
+# 713
+CU_DEVICE_ATTRIBUTE_PAGEABLE_MEMORY_ACCESS, 
+# 714
+CU_DEVICE_ATTRIBUTE_CONCURRENT_MANAGED_ACCESS, 
+# 715
+CU_DEVICE_ATTRIBUTE_COMPUTE_PREEMPTION_SUPPORTED, 
+# 716
+CU_DEVICE_ATTRIBUTE_CAN_USE_HOST_POINTER_FOR_REGISTERED_MEM, 
+# 717
+CU_DEVICE_ATTRIBUTE_CAN_USE_STREAM_MEM_OPS_V1, 
+# 718
+CU_DEVICE_ATTRIBUTE_CAN_USE_64_BIT_STREAM_MEM_OPS_V1, 
+# 719
+CU_DEVICE_ATTRIBUTE_CAN_USE_STREAM_WAIT_VALUE_NOR_V1, 
+# 720
+CU_DEVICE_ATTRIBUTE_COOPERATIVE_LAUNCH, 
+# 721
+CU_DEVICE_ATTRIBUTE_COOPERATIVE_MULTI_DEVICE_LAUNCH, 
+# 722
+CU_DEVICE_ATTRIBUTE_MAX_SHARED_MEMORY_PER_BLOCK_OPTIN, 
+# 723
+CU_DEVICE_ATTRIBUTE_CAN_FLUSH_REMOTE_WRITES, 
+# 724
+CU_DEVICE_ATTRIBUTE_HOST_REGISTER_SUPPORTED, 
+# 725
+CU_DEVICE_ATTRIBUTE_PAGEABLE_MEMORY_ACCESS_USES_HOST_PAGE_TABLES, 
+# 726
+CU_DEVICE_ATTRIBUTE_DIRECT_MANAGED_MEM_ACCESS_FROM_HOST, 
+# 727
+CU_DEVICE_ATTRIBUTE_VIRTUAL_ADDRESS_MANAGEMENT_SUPPORTED, 
+# 728
+CU_DEVICE_ATTRIBUTE_VIRTUAL_MEMORY_MANAGEMENT_SUPPORTED = 102, 
+# 729
+CU_DEVICE_ATTRIBUTE_HANDLE_TYPE_POSIX_FILE_DESCRIPTOR_SUPPORTED, 
+# 730
+CU_DEVICE_ATTRIBUTE_HANDLE_TYPE_WIN32_HANDLE_SUPPORTED, 
+# 731
+CU_DEVICE_ATTRIBUTE_HANDLE_TYPE_WIN32_KMT_HANDLE_SUPPORTED, 
+# 732
+CU_DEVICE_ATTRIBUTE_MAX_BLOCKS_PER_MULTIPROCESSOR, 
+# 733
+CU_DEVICE_ATTRIBUTE_GENERIC_COMPRESSION_SUPPORTED, 
+# 734
+CU_DEVICE_ATTRIBUTE_MAX_PERSISTING_L2_CACHE_SIZE, 
+# 735
+CU_DEVICE_ATTRIBUTE_MAX_ACCESS_POLICY_WINDOW_SIZE, 
+# 736
+CU_DEVICE_ATTRIBUTE_GPU_DIRECT_RDMA_WITH_CUDA_VMM_SUPPORTED, 
+# 737
+CU_DEVICE_ATTRIBUTE_RESERVED_SHARED_MEMORY_PER_BLOCK, 
+# 738
+CU_DEVICE_ATTRIBUTE_SPARSE_CUDA_ARRAY_SUPPORTED, 
+# 739
+CU_DEVICE_ATTRIBUTE_READ_ONLY_HOST_REGISTER_SUPPORTED, 
+# 740
+CU_DEVICE_ATTRIBUTE_TIMELINE_SEMAPHORE_INTEROP_SUPPORTED, 
+# 741
+CU_DEVICE_ATTRIBUTE_MEMORY_POOLS_SUPPORTED, 
+# 742
+CU_DEVICE_ATTRIBUTE_GPU_DIRECT_RDMA_SUPPORTED, 
+# 743
+CU_DEVICE_ATTRIBUTE_GPU_DIRECT_RDMA_FLUSH_WRITES_OPTIONS, 
+# 744
+CU_DEVICE_ATTRIBUTE_GPU_DIRECT_RDMA_WRITES_ORDERING, 
+# 745
+CU_DEVICE_ATTRIBUTE_MEMPOOL_SUPPORTED_HANDLE_TYPES, 
+# 746
+CU_DEVICE_ATTRIBUTE_CLUSTER_LAUNCH, 
+# 747
+CU_DEVICE_ATTRIBUTE_DEFERRED_MAPPING_CUDA_ARRAY_SUPPORTED, 
+# 748
+CU_DEVICE_ATTRIBUTE_CAN_USE_64_BIT_STREAM_MEM_OPS, 
+# 749
+CU_DEVICE_ATTRIBUTE_CAN_USE_STREAM_WAIT_VALUE_NOR, 
+# 750
+CU_DEVICE_ATTRIBUTE_DMA_BUF_SUPPORTED, 
+# 751
+CU_DEVICE_ATTRIBUTE_IPC_EVENT_SUPPORTED, 
+# 752
+CU_DEVICE_ATTRIBUTE_MEM_SYNC_DOMAIN_COUNT, 
+# 753
+CU_DEVICE_ATTRIBUTE_TENSOR_MAP_ACCESS_SUPPORTED, 
+# 754
+CU_DEVICE_ATTRIBUTE_UNIFIED_FUNCTION_POINTERS = 129, 
+# 755
+CU_DEVICE_ATTRIBUTE_MULTICAST_SUPPORTED = 132, 
+# 756
+CU_DEVICE_ATTRIBUTE_MAX
+# 757
+} CUdevice_attribute; 
+# 773
+typedef 
+# 762
+struct CUdevprop_st { 
+# 763
+int maxThreadsPerBlock; 
+# 764
+int maxThreadsDim[3]; 
+# 765
+int maxGridSize[3]; 
+# 766
+int sharedMemPerBlock; 
+# 767
+int totalConstantMemory; 
+# 768
+int SIMDWidth; 
+# 769
+int memPitch; 
+# 770
+int regsPerBlock; 
+# 771
+int clockRate; 
+# 772
+int textureAlign; 
+# 773
+} CUdevprop_v1; 
+# 774
+typedef CUdevprop_v1 CUdevprop; 
+# 801
+typedef 
+# 779
+enum CUpointer_attribute_enum { 
+# 780
+CU_POINTER_ATTRIBUTE_CONTEXT = 1, 
+# 781
+CU_POINTER_ATTRIBUTE_MEMORY_TYPE, 
+# 782
+CU_POINTER_ATTRIBUTE_DEVICE_POINTER, 
+# 783
+CU_POINTER_ATTRIBUTE_HOST_POINTER, 
+# 784
+CU_POINTER_ATTRIBUTE_P2P_TOKENS, 
+# 785
+CU_POINTER_ATTRIBUTE_SYNC_MEMOPS, 
+# 786
+CU_POINTER_ATTRIBUTE_BUFFER_ID, 
+# 787
+CU_POINTER_ATTRIBUTE_IS_MANAGED, 
+# 788
+CU_POINTER_ATTRIBUTE_DEVICE_ORDINAL, 
+# 789
+CU_POINTER_ATTRIBUTE_IS_LEGACY_CUDA_IPC_CAPABLE, 
+# 790
+CU_POINTER_ATTRIBUTE_RANGE_START_ADDR, 
+# 791
+CU_POINTER_ATTRIBUTE_RANGE_SIZE, 
+# 792
+CU_POINTER_ATTRIBUTE_MAPPED, 
+# 793
+CU_POINTER_ATTRIBUTE_ALLOWED_HANDLE_TYPES, 
+# 794
+CU_POINTER_ATTRIBUTE_IS_GPU_DIRECT_RDMA_CAPABLE, 
+# 795
+CU_POINTER_ATTRIBUTE_ACCESS_FLAGS, 
+# 796
+CU_POINTER_ATTRIBUTE_MEMPOOL_HANDLE, 
+# 798
+CU_POINTER_ATTRIBUTE_MAPPING_SIZE, 
+# 799
+CU_POINTER_ATTRIBUTE_MAPPING_BASE_ADDR, 
+# 800
+CU_POINTER_ATTRIBUTE_MEMORY_BLOCK_ID
+# 801
+} CUpointer_attribute; 
+# 948 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 806 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+enum CUfunction_attribute_enum { 
+# 812
+CU_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK, 
+# 819
+CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES, 
+# 825
+CU_FUNC_ATTRIBUTE_CONST_SIZE_BYTES, 
+# 830
+CU_FUNC_ATTRIBUTE_LOCAL_SIZE_BYTES, 
+# 835
+CU_FUNC_ATTRIBUTE_NUM_REGS, 
+# 844 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_FUNC_ATTRIBUTE_PTX_VERSION, 
+# 853 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_FUNC_ATTRIBUTE_BINARY_VERSION, 
+# 859
+CU_FUNC_ATTRIBUTE_CACHE_MODE_CA, 
+# 867
+CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES, 
+# 876 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_FUNC_ATTRIBUTE_PREFERRED_SHARED_MEMORY_CARVEOUT, 
+# 883
+CU_FUNC_ATTRIBUTE_CLUSTER_SIZE_MUST_BE_SET, 
+# 894 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_FUNC_ATTRIBUTE_REQUIRED_CLUSTER_WIDTH, 
+# 905 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_FUNC_ATTRIBUTE_REQUIRED_CLUSTER_HEIGHT, 
+# 916 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_FUNC_ATTRIBUTE_REQUIRED_CLUSTER_DEPTH, 
+# 938 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_FUNC_ATTRIBUTE_NON_PORTABLE_CLUSTER_SIZE_ALLOWED, 
+# 945
+CU_FUNC_ATTRIBUTE_CLUSTER_SCHEDULING_POLICY_PREFERENCE, 
+# 947
+CU_FUNC_ATTRIBUTE_MAX
+# 948
+} CUfunction_attribute; 
+# 958
+typedef 
+# 953
+enum CUfunc_cache_enum { 
+# 954
+CU_FUNC_CACHE_PREFER_NONE, 
+# 955
+CU_FUNC_CACHE_PREFER_SHARED, 
+# 956
+CU_FUNC_CACHE_PREFER_L1, 
+# 957
+CU_FUNC_CACHE_PREFER_EQUAL
+# 958
+} CUfunc_cache; 
+# 967
+typedef 
+# 963
+enum CUsharedconfig_enum { 
+# 964
+CU_SHARED_MEM_CONFIG_DEFAULT_BANK_SIZE, 
+# 965
+CU_SHARED_MEM_CONFIG_FOUR_BYTE_BANK_SIZE, 
+# 966
+CU_SHARED_MEM_CONFIG_EIGHT_BYTE_BANK_SIZE
+# 967
+} CUsharedconfig; 
+# 976
+typedef 
+# 972
+enum CUshared_carveout_enum { 
+# 973
+CU_SHAREDMEM_CARVEOUT_DEFAULT = (-1), 
+# 974
+CU_SHAREDMEM_CARVEOUT_MAX_SHARED = 100, 
+# 975
+CU_SHAREDMEM_CARVEOUT_MAX_L1 = 0
+# 976
+} CUshared_carveout; 
+# 986
+typedef 
+# 981
+enum CUmemorytype_enum { 
+# 982
+CU_MEMORYTYPE_HOST = 1, 
+# 983
+CU_MEMORYTYPE_DEVICE, 
+# 984
+CU_MEMORYTYPE_ARRAY, 
+# 985
+CU_MEMORYTYPE_UNIFIED
+# 986
+} CUmemorytype; 
+# 995
+typedef 
+# 991
+enum CUcomputemode_enum { 
+# 992
+CU_COMPUTEMODE_DEFAULT, 
+# 993
+CU_COMPUTEMODE_PROHIBITED = 2, 
+# 994
+CU_COMPUTEMODE_EXCLUSIVE_PROCESS
+# 995
+} CUcomputemode; 
+# 1007
+typedef 
+# 1000
+enum CUmem_advise_enum { 
+# 1001
+CU_MEM_ADVISE_SET_READ_MOSTLY = 1, 
+# 1002
+CU_MEM_ADVISE_UNSET_READ_MOSTLY, 
+# 1003
+CU_MEM_ADVISE_SET_PREFERRED_LOCATION, 
+# 1004
+CU_MEM_ADVISE_UNSET_PREFERRED_LOCATION, 
+# 1005
+CU_MEM_ADVISE_SET_ACCESSED_BY, 
+# 1006
+CU_MEM_ADVISE_UNSET_ACCESSED_BY
+# 1007
+} CUmem_advise; 
+# 1014
+typedef 
+# 1009
+enum CUmem_range_attribute_enum { 
+# 1010
+CU_MEM_RANGE_ATTRIBUTE_READ_MOSTLY = 1, 
+# 1011
+CU_MEM_RANGE_ATTRIBUTE_PREFERRED_LOCATION, 
+# 1012
+CU_MEM_RANGE_ATTRIBUTE_ACCESSED_BY, 
+# 1013
+CU_MEM_RANGE_ATTRIBUTE_LAST_PREFETCH_LOCATION
+# 1014
+} CUmem_range_attribute; 
+# 1337 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 1019 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+enum CUjit_option_enum { 
+# 1026
+CU_JIT_MAX_REGISTERS, 
+# 1041 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_THREADS_PER_BLOCK, 
+# 1049
+CU_JIT_WALL_TIME, 
+# 1058 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_INFO_LOG_BUFFER, 
+# 1067 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_INFO_LOG_BUFFER_SIZE_BYTES, 
+# 1076 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_ERROR_LOG_BUFFER, 
+# 1085 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_ERROR_LOG_BUFFER_SIZE_BYTES, 
+# 1093
+CU_JIT_OPTIMIZATION_LEVEL, 
+# 1101
+CU_JIT_TARGET_FROM_CUCONTEXT, 
+# 1109
+CU_JIT_TARGET, 
+# 1118 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_FALLBACK_STRATEGY, 
+# 1126
+CU_JIT_GENERATE_DEBUG_INFO, 
+# 1133
+CU_JIT_LOG_VERBOSE, 
+# 1140
+CU_JIT_GENERATE_LINE_INFO, 
+# 1148
+CU_JIT_CACHE_MODE, 
+# 1154
+CU_JIT_NEW_SM3X_OPT, 
+# 1159
+CU_JIT_FAST_COMPILE, 
+# 1173 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_GLOBAL_SYMBOL_NAMES, 
+# 1182 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_GLOBAL_SYMBOL_ADDRESSES, 
+# 1190
+CU_JIT_GLOBAL_SYMBOL_COUNT, 
+# 1201 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_LTO, 
+# 1213 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_FTZ, 
+# 1226 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_PREC_DIV, 
+# 1239 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_PREC_SQRT, 
+# 1251 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_FMA, 
+# 1271 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_REFERENCED_KERNEL_NAMES, 
+# 1281 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_REFERENCED_KERNEL_COUNT, 
+# 1301 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_REFERENCED_VARIABLE_NAMES, 
+# 1311 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_REFERENCED_VARIABLE_COUNT, 
+# 1326 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_OPTIMIZE_UNUSED_DEVICE_VARIABLES, 
+# 1333
+CU_JIT_POSITION_INDEPENDENT_CODE, 
+# 1335
+CU_JIT_NUM_OPTIONS
+# 1337
+} CUjit_option; 
+# 1370 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 1347
+enum CUjit_target_enum { 
+# 1349
+CU_TARGET_COMPUTE_30 = 30, 
+# 1350
+CU_TARGET_COMPUTE_32 = 32, 
+# 1351
+CU_TARGET_COMPUTE_35 = 35, 
+# 1352
+CU_TARGET_COMPUTE_37 = 37, 
+# 1353
+CU_TARGET_COMPUTE_50 = 50, 
+# 1354
+CU_TARGET_COMPUTE_52 = 52, 
+# 1355
+CU_TARGET_COMPUTE_53, 
+# 1356
+CU_TARGET_COMPUTE_60 = 60, 
+# 1357
+CU_TARGET_COMPUTE_61, 
+# 1358
+CU_TARGET_COMPUTE_62, 
+# 1359
+CU_TARGET_COMPUTE_70 = 70, 
+# 1360
+CU_TARGET_COMPUTE_72 = 72, 
+# 1361
+CU_TARGET_COMPUTE_75 = 75, 
+# 1362
+CU_TARGET_COMPUTE_80 = 80, 
+# 1363
+CU_TARGET_COMPUTE_86 = 86, 
+# 1364
+CU_TARGET_COMPUTE_87, 
+# 1365
+CU_TARGET_COMPUTE_89 = 89, 
+# 1366
+CU_TARGET_COMPUTE_90, 
+# 1369
+CU_TARGET_COMPUTE_90A = (65536 + CU_TARGET_COMPUTE_90)
+# 1370
+} CUjit_target; 
+# 1381
+typedef 
+# 1375
+enum CUjit_fallback_enum { 
+# 1377
+CU_PREFER_PTX, 
+# 1379
+CU_PREFER_BINARY
+# 1381
+} CUjit_fallback; 
+# 1391
+typedef 
+# 1386
+enum CUjit_cacheMode_enum { 
+# 1388
+CU_JIT_CACHE_OPTION_NONE, 
+# 1389
+CU_JIT_CACHE_OPTION_CG, 
+# 1390
+CU_JIT_CACHE_OPTION_CA
+# 1391
+} CUjit_cacheMode; 
+# 1438 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 1396 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+enum CUjitInputType_enum { 
+# 1402
+CU_JIT_INPUT_CUBIN, 
+# 1408
+CU_JIT_INPUT_PTX, 
+# 1414
+CU_JIT_INPUT_FATBINARY, 
+# 1420
+CU_JIT_INPUT_OBJECT, 
+# 1426
+CU_JIT_INPUT_LIBRARY, 
+# 1435 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_JIT_INPUT_NVVM, 
+# 1437
+CU_JIT_NUM_INPUT_TYPES
+# 1438
+} CUjitInputType; 
+# 1440
+typedef struct CUlinkState_st *CUlinkState; 
+# 1451
+typedef 
+# 1445
+enum CUgraphicsRegisterFlags_enum { 
+# 1446
+CU_GRAPHICS_REGISTER_FLAGS_NONE, 
+# 1447
+CU_GRAPHICS_REGISTER_FLAGS_READ_ONLY, 
+# 1448
+CU_GRAPHICS_REGISTER_FLAGS_WRITE_DISCARD, 
+# 1449
+CU_GRAPHICS_REGISTER_FLAGS_SURFACE_LDST = 4, 
+# 1450
+CU_GRAPHICS_REGISTER_FLAGS_TEXTURE_GATHER = 8
+# 1451
+} CUgraphicsRegisterFlags; 
+# 1460
+typedef 
+# 1456
+enum CUgraphicsMapResourceFlags_enum { 
+# 1457
+CU_GRAPHICS_MAP_RESOURCE_FLAGS_NONE, 
+# 1458
+CU_GRAPHICS_MAP_RESOURCE_FLAGS_READ_ONLY, 
+# 1459
+CU_GRAPHICS_MAP_RESOURCE_FLAGS_WRITE_DISCARD
+# 1460
+} CUgraphicsMapResourceFlags; 
+# 1472
+typedef 
+# 1465
+enum CUarray_cubemap_face_enum { 
+# 1466
+CU_CUBEMAP_FACE_POSITIVE_X, 
+# 1467
+CU_CUBEMAP_FACE_NEGATIVE_X, 
+# 1468
+CU_CUBEMAP_FACE_POSITIVE_Y, 
+# 1469
+CU_CUBEMAP_FACE_NEGATIVE_Y, 
+# 1470
+CU_CUBEMAP_FACE_POSITIVE_Z, 
+# 1471
+CU_CUBEMAP_FACE_NEGATIVE_Z
+# 1472
+} CUarray_cubemap_face; 
+# 1486
+typedef 
+# 1477
+enum CUlimit_enum { 
+# 1478
+CU_LIMIT_STACK_SIZE, 
+# 1479
+CU_LIMIT_PRINTF_FIFO_SIZE, 
+# 1480
+CU_LIMIT_MALLOC_HEAP_SIZE, 
+# 1481
+CU_LIMIT_DEV_RUNTIME_SYNC_DEPTH, 
+# 1482
+CU_LIMIT_DEV_RUNTIME_PENDING_LAUNCH_COUNT, 
+# 1483
+CU_LIMIT_MAX_L2_FETCH_GRANULARITY, 
+# 1484
+CU_LIMIT_PERSISTING_L2_CACHE_SIZE, 
+# 1485
+CU_LIMIT_MAX
+# 1486
+} CUlimit; 
+# 1496
+typedef 
+# 1491
+enum CUresourcetype_enum { 
+# 1492
+CU_RESOURCE_TYPE_ARRAY, 
+# 1493
+CU_RESOURCE_TYPE_MIPMAPPED_ARRAY, 
+# 1494
+CU_RESOURCE_TYPE_LINEAR, 
+# 1495
+CU_RESOURCE_TYPE_PITCH2D
+# 1496
+} CUresourcetype; 
+# 1508 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef void (*CUhostFn)(void * userData); 
+# 1517
+typedef 
+# 1513
+enum CUaccessProperty_enum { 
+# 1514
+CU_ACCESS_PROPERTY_NORMAL, 
+# 1515
+CU_ACCESS_PROPERTY_STREAMING, 
+# 1516
+CU_ACCESS_PROPERTY_PERSISTING
+# 1517
+} CUaccessProperty; 
+# 1537 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 1531
+struct CUaccessPolicyWindow_st { 
+# 1532
+void *base_ptr; 
+# 1533
+::size_t num_bytes; 
+# 1534
+float hitRatio; 
+# 1535
+CUaccessProperty hitProp; 
+# 1536
+CUaccessProperty missProp; 
+# 1537
+} CUaccessPolicyWindow_v1; 
+# 1541
+typedef CUaccessPolicyWindow_v1 CUaccessPolicyWindow; 
+# 1557
+typedef 
+# 1546
+struct CUDA_KERNEL_NODE_PARAMS_st { 
+# 1547
+CUfunction func; 
+# 1548
+unsigned gridDimX; 
+# 1549
+unsigned gridDimY; 
+# 1550
+unsigned gridDimZ; 
+# 1551
+unsigned blockDimX; 
+# 1552
+unsigned blockDimY; 
+# 1553
+unsigned blockDimZ; 
+# 1554
+unsigned sharedMemBytes; 
+# 1555
+void **kernelParams; 
+# 1556
+void **extra; 
+# 1557
+} CUDA_KERNEL_NODE_PARAMS_v1; 
+# 1574
+typedef 
+# 1561
+struct CUDA_KERNEL_NODE_PARAMS_v2_st { 
+# 1562
+CUfunction func; 
+# 1563
+unsigned gridDimX; 
+# 1564
+unsigned gridDimY; 
+# 1565
+unsigned gridDimZ; 
+# 1566
+unsigned blockDimX; 
+# 1567
+unsigned blockDimY; 
+# 1568
+unsigned blockDimZ; 
+# 1569
+unsigned sharedMemBytes; 
+# 1570
+void **kernelParams; 
+# 1571
+void **extra; 
+# 1572
+CUkernel kern; 
+# 1573
+CUcontext ctx; 
+# 1574
+} CUDA_KERNEL_NODE_PARAMS_v2; 
+# 1575
+typedef CUDA_KERNEL_NODE_PARAMS_v2 CUDA_KERNEL_NODE_PARAMS; 
+# 1587
+typedef 
+# 1580
+struct CUDA_MEMSET_NODE_PARAMS_st { 
+# 1581
+CUdeviceptr dst; 
+# 1582
+::size_t pitch; 
+# 1583
+unsigned value; 
+# 1584
+unsigned elementSize; 
+# 1585
+::size_t width; 
+# 1586
+::size_t height; 
+# 1587
+} CUDA_MEMSET_NODE_PARAMS_v1; 
+# 1588
+typedef CUDA_MEMSET_NODE_PARAMS_v1 CUDA_MEMSET_NODE_PARAMS; 
+# 1596
+typedef 
+# 1593
+struct CUDA_HOST_NODE_PARAMS_st { 
+# 1594
+CUhostFn fn; 
+# 1595
+void *userData; 
+# 1596
+} CUDA_HOST_NODE_PARAMS_v1; 
+# 1597
+typedef CUDA_HOST_NODE_PARAMS_v1 CUDA_HOST_NODE_PARAMS; 
+# 1616
+typedef 
+# 1602
+enum CUgraphNodeType_enum { 
+# 1603
+CU_GRAPH_NODE_TYPE_KERNEL, 
+# 1604
+CU_GRAPH_NODE_TYPE_MEMCPY, 
+# 1605
+CU_GRAPH_NODE_TYPE_MEMSET, 
+# 1606
+CU_GRAPH_NODE_TYPE_HOST, 
+# 1607
+CU_GRAPH_NODE_TYPE_GRAPH, 
+# 1608
+CU_GRAPH_NODE_TYPE_EMPTY, 
+# 1609
+CU_GRAPH_NODE_TYPE_WAIT_EVENT, 
+# 1610
+CU_GRAPH_NODE_TYPE_EVENT_RECORD, 
+# 1611
+CU_GRAPH_NODE_TYPE_EXT_SEMAS_SIGNAL, 
+# 1612
+CU_GRAPH_NODE_TYPE_EXT_SEMAS_WAIT, 
+# 1613
+CU_GRAPH_NODE_TYPE_MEM_ALLOC, 
+# 1614
+CU_GRAPH_NODE_TYPE_MEM_FREE, 
+# 1615
+CU_GRAPH_NODE_TYPE_BATCH_MEM_OP
+# 1616
+} CUgraphNodeType; 
+# 1628
+typedef 
+# 1621
+enum CUgraphInstantiateResult_enum { 
+# 1623
+CUDA_GRAPH_INSTANTIATE_SUCCESS, 
+# 1624
+CUDA_GRAPH_INSTANTIATE_ERROR, 
+# 1625
+CUDA_GRAPH_INSTANTIATE_INVALID_STRUCTURE, 
+# 1626
+CUDA_GRAPH_INSTANTIATE_NODE_OPERATION_NOT_SUPPORTED, 
+# 1627
+CUDA_GRAPH_INSTANTIATE_MULTIPLE_CTXS_NOT_SUPPORTED
+# 1628
+} CUgraphInstantiateResult; 
+# 1639
+typedef 
+# 1633
+struct CUDA_GRAPH_INSTANTIATE_PARAMS_st { 
+# 1635
+cuuint64_t flags; 
+# 1636
+CUstream hUploadStream; 
+# 1637
+CUgraphNode hErrNode_out; 
+# 1638
+CUgraphInstantiateResult result_out; 
+# 1639
+} CUDA_GRAPH_INSTANTIATE_PARAMS; 
+# 1646
+typedef 
+# 1641
+enum CUsynchronizationPolicy_enum { 
+# 1642
+CU_SYNC_POLICY_AUTO = 1, 
+# 1643
+CU_SYNC_POLICY_SPIN, 
+# 1644
+CU_SYNC_POLICY_YIELD, 
+# 1645
+CU_SYNC_POLICY_BLOCKING_SYNC
+# 1646
+} CUsynchronizationPolicy; 
+# 1655
+typedef 
+# 1651
+enum CUclusterSchedulingPolicy_enum { 
+# 1652
+CU_CLUSTER_SCHEDULING_POLICY_DEFAULT, 
+# 1653
+CU_CLUSTER_SCHEDULING_POLICY_SPREAD, 
+# 1654
+CU_CLUSTER_SCHEDULING_POLICY_LOAD_BALANCING
+# 1655
+} CUclusterSchedulingPolicy; 
+# 1660
+typedef 
+# 1657
+enum CUlaunchMemSyncDomain_enum { 
+# 1658
+CU_LAUNCH_MEM_SYNC_DOMAIN_DEFAULT, 
+# 1659
+CU_LAUNCH_MEM_SYNC_DOMAIN_REMOTE
+# 1660
+} CUlaunchMemSyncDomain; 
+# 1665
+typedef 
+# 1662
+struct CUlaunchMemSyncDomainMap_st { 
+# 1663
+unsigned char default_; 
+# 1664
+unsigned char remote; 
+# 1665
+} CUlaunchMemSyncDomainMap; 
+# 1714 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 1667 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+enum CUlaunchAttributeID_enum { 
+# 1668
+CU_LAUNCH_ATTRIBUTE_IGNORE, 
+# 1669
+CU_LAUNCH_ATTRIBUTE_ACCESS_POLICY_WINDOW, 
+# 1670
+CU_LAUNCH_ATTRIBUTE_COOPERATIVE, 
+# 1671
+CU_LAUNCH_ATTRIBUTE_SYNCHRONIZATION_POLICY, 
+# 1672
+CU_LAUNCH_ATTRIBUTE_CLUSTER_DIMENSION, 
+# 1673
+CU_LAUNCH_ATTRIBUTE_CLUSTER_SCHEDULING_POLICY_PREFERENCE, 
+# 1674
+CU_LAUNCH_ATTRIBUTE_PROGRAMMATIC_STREAM_SERIALIZATION, 
+# 1685 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_LAUNCH_ATTRIBUTE_PROGRAMMATIC_EVENT, 
+# 1708 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_LAUNCH_ATTRIBUTE_PRIORITY, 
+# 1709
+CU_LAUNCH_ATTRIBUTE_MEM_SYNC_DOMAIN_MAP, 
+# 1710
+CU_LAUNCH_ATTRIBUTE_MEM_SYNC_DOMAIN
+# 1714
+} CUlaunchAttributeID; 
+# 1736
+typedef 
+# 1716
+union CUlaunchAttributeValue_union { 
+# 1717
+char pad[64]; 
+# 1718
+CUaccessPolicyWindow accessPolicyWindow; 
+# 1719
+int cooperative; 
+# 1720
+CUsynchronizationPolicy syncPolicy; 
+# 1721
+struct { 
+# 1722
+unsigned x; 
+# 1723
+unsigned y; 
+# 1724
+unsigned z; 
+# 1725
+} clusterDim; 
+# 1726
+CUclusterSchedulingPolicy clusterSchedulingPolicyPreference; 
+# 1727
+int programmaticStreamSerializationAllowed; 
+# 1728
+struct { 
+# 1729
+CUevent event; 
+# 1730
+int flags; 
+# 1731
+int triggerAtBlockStart; 
+# 1732
+} programmaticEvent; 
+# 1733
+int priority; 
+# 1734
+CUlaunchMemSyncDomainMap memSyncDomainMap; 
+# 1735
+CUlaunchMemSyncDomain memSyncDomain; 
+# 1736
+} CUlaunchAttributeValue; 
+# 1742
+typedef 
+# 1738
+struct CUlaunchAttribute_st { 
+# 1739
+CUlaunchAttributeID id; 
+# 1740
+char pad[(8) - sizeof(CUlaunchAttributeID)]; 
+# 1741
+CUlaunchAttributeValue value; 
+# 1742
+} CUlaunchAttribute; 
+# 1755
+typedef 
+# 1744
+struct CUlaunchConfig_st { 
+# 1745
+unsigned gridDimX; 
+# 1746
+unsigned gridDimY; 
+# 1747
+unsigned gridDimZ; 
+# 1748
+unsigned blockDimX; 
+# 1749
+unsigned blockDimY; 
+# 1750
+unsigned blockDimZ; 
+# 1751
+unsigned sharedMemBytes; 
+# 1752
+CUstream hStream; 
+# 1753
+CUlaunchAttribute *attrs; 
+# 1754
+unsigned numAttrs; 
+# 1755
+} CUlaunchConfig; 
+# 1757
+typedef CUlaunchAttributeID CUkernelNodeAttrID; 
+# 1766 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef CUlaunchAttributeValue CUkernelNodeAttrValue_v1; 
+# 1767
+typedef CUkernelNodeAttrValue_v1 CUkernelNodeAttrValue; 
+# 1777
+typedef 
+# 1772
+enum CUstreamCaptureStatus_enum { 
+# 1773
+CU_STREAM_CAPTURE_STATUS_NONE, 
+# 1774
+CU_STREAM_CAPTURE_STATUS_ACTIVE, 
+# 1775
+CU_STREAM_CAPTURE_STATUS_INVALIDATED
+# 1777
+} CUstreamCaptureStatus; 
+# 1787
+typedef 
+# 1783
+enum CUstreamCaptureMode_enum { 
+# 1784
+CU_STREAM_CAPTURE_MODE_GLOBAL, 
+# 1785
+CU_STREAM_CAPTURE_MODE_THREAD_LOCAL, 
+# 1786
+CU_STREAM_CAPTURE_MODE_RELAXED
+# 1787
+} CUstreamCaptureMode; 
+# 1789
+typedef CUlaunchAttributeID CUstreamAttrID; 
+# 1796
+typedef CUlaunchAttributeValue CUstreamAttrValue_v1; 
+# 1797
+typedef CUstreamAttrValue_v1 CUstreamAttrValue; 
+# 1806
+typedef 
+# 1802
+enum CUdriverProcAddress_flags_enum { 
+# 1803
+CU_GET_PROC_ADDRESS_DEFAULT, 
+# 1804
+CU_GET_PROC_ADDRESS_LEGACY_STREAM, 
+# 1805
+CU_GET_PROC_ADDRESS_PER_THREAD_DEFAULT_STREAM
+# 1806
+} CUdriverProcAddress_flags; 
+# 1815
+typedef 
+# 1811
+enum CUdriverProcAddressQueryResult_enum { 
+# 1812
+CU_GET_PROC_ADDRESS_SUCCESS, 
+# 1813
+CU_GET_PROC_ADDRESS_SYMBOL_NOT_FOUND, 
+# 1814
+CU_GET_PROC_ADDRESS_VERSION_NOT_SUFFICIENT
+# 1815
+} CUdriverProcAddressQueryResult; 
+# 1823
+typedef 
+# 1820
+enum CUexecAffinityType_enum { 
+# 1821
+CU_EXEC_AFFINITY_TYPE_SM_COUNT, 
+# 1822
+CU_EXEC_AFFINITY_TYPE_MAX
+# 1823
+} CUexecAffinityType; 
+# 1830
+typedef 
+# 1828
+struct CUexecAffinitySmCount_st { 
+# 1829
+unsigned val; 
+# 1830
+} CUexecAffinitySmCount_v1; 
+# 1831
+typedef CUexecAffinitySmCount_v1 CUexecAffinitySmCount; 
+# 1841
+typedef 
+# 1836
+struct CUexecAffinityParam_st { 
+# 1837
+CUexecAffinityType type; 
+# 1838
+union { 
+# 1839
+CUexecAffinitySmCount smCount; 
+# 1840
+} param; 
+# 1841
+} CUexecAffinityParam_v1; 
+# 1845
+typedef CUexecAffinityParam_v1 CUexecAffinityParam; 
+# 1866 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 1850 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+enum CUlibraryOption_enum { 
+# 1852
+CU_LIBRARY_HOST_UNIVERSAL_FUNCTION_AND_DATA_TABLE, 
+# 1863 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_LIBRARY_BINARY_IS_PRESERVED, 
+# 1865
+CU_LIBRARY_NUM_OPTIONS
+# 1866
+} CUlibraryOption; 
+# 1874
+typedef 
+# 1868
+struct CUlibraryHostUniversalFunctionAndDataTable_st { 
+# 1870
+void *functionTable; 
+# 1871
+::size_t functionWindowSize; 
+# 1872
+void *dataTable; 
+# 1873
+::size_t dataWindowSize; 
+# 1874
+} CUlibraryHostUniversalFunctionAndDataTable; 
+# 2486 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 1879 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+enum cudaError_enum { 
+# 1885
+CUDA_SUCCESS, 
+# 1891
+CUDA_ERROR_INVALID_VALUE, 
+# 1897
+CUDA_ERROR_OUT_OF_MEMORY, 
+# 1903
+CUDA_ERROR_NOT_INITIALIZED, 
+# 1908
+CUDA_ERROR_DEINITIALIZED, 
+# 1915
+CUDA_ERROR_PROFILER_DISABLED, 
+# 1923
+CUDA_ERROR_PROFILER_NOT_INITIALIZED, 
+# 1930
+CUDA_ERROR_PROFILER_ALREADY_STARTED, 
+# 1937
+CUDA_ERROR_PROFILER_ALREADY_STOPPED, 
+# 1944
+CUDA_ERROR_STUB_LIBRARY = 34, 
+# 1951
+CUDA_ERROR_DEVICE_UNAVAILABLE = 46, 
+# 1957
+CUDA_ERROR_NO_DEVICE = 100, 
+# 1964
+CUDA_ERROR_INVALID_DEVICE, 
+# 1969
+CUDA_ERROR_DEVICE_NOT_LICENSED, 
+# 1975
+CUDA_ERROR_INVALID_IMAGE = 200, 
+# 1985 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_INVALID_CONTEXT, 
+# 1994 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_CONTEXT_ALREADY_CURRENT, 
+# 1999
+CUDA_ERROR_MAP_FAILED = 205, 
+# 2004
+CUDA_ERROR_UNMAP_FAILED, 
+# 2010
+CUDA_ERROR_ARRAY_IS_MAPPED, 
+# 2015
+CUDA_ERROR_ALREADY_MAPPED, 
+# 2023
+CUDA_ERROR_NO_BINARY_FOR_GPU, 
+# 2028
+CUDA_ERROR_ALREADY_ACQUIRED, 
+# 2033
+CUDA_ERROR_NOT_MAPPED, 
+# 2039
+CUDA_ERROR_NOT_MAPPED_AS_ARRAY, 
+# 2045
+CUDA_ERROR_NOT_MAPPED_AS_POINTER, 
+# 2051
+CUDA_ERROR_ECC_UNCORRECTABLE, 
+# 2057
+CUDA_ERROR_UNSUPPORTED_LIMIT, 
+# 2064
+CUDA_ERROR_CONTEXT_ALREADY_IN_USE, 
+# 2070
+CUDA_ERROR_PEER_ACCESS_UNSUPPORTED, 
+# 2075
+CUDA_ERROR_INVALID_PTX, 
+# 2080
+CUDA_ERROR_INVALID_GRAPHICS_CONTEXT, 
+# 2086
+CUDA_ERROR_NVLINK_UNCORRECTABLE, 
+# 2091
+CUDA_ERROR_JIT_COMPILER_NOT_FOUND, 
+# 2097
+CUDA_ERROR_UNSUPPORTED_PTX_VERSION, 
+# 2102
+CUDA_ERROR_JIT_COMPILATION_DISABLED, 
+# 2108
+CUDA_ERROR_UNSUPPORTED_EXEC_AFFINITY, 
+# 2114
+CUDA_ERROR_UNSUPPORTED_DEVSIDE_SYNC, 
+# 2120
+CUDA_ERROR_INVALID_SOURCE = 300, 
+# 2125
+CUDA_ERROR_FILE_NOT_FOUND, 
+# 2130
+CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND, 
+# 2135
+CUDA_ERROR_SHARED_OBJECT_INIT_FAILED, 
+# 2140
+CUDA_ERROR_OPERATING_SYSTEM, 
+# 2146
+CUDA_ERROR_INVALID_HANDLE = 400, 
+# 2152
+CUDA_ERROR_ILLEGAL_STATE, 
+# 2159
+CUDA_ERROR_NOT_FOUND = 500, 
+# 2167
+CUDA_ERROR_NOT_READY = 600, 
+# 2176 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_ILLEGAL_ADDRESS = 700, 
+# 2187 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_LAUNCH_OUT_OF_RESOURCES, 
+# 2197 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_LAUNCH_TIMEOUT, 
+# 2203
+CUDA_ERROR_LAUNCH_INCOMPATIBLE_TEXTURING, 
+# 2210
+CUDA_ERROR_PEER_ACCESS_ALREADY_ENABLED, 
+# 2217
+CUDA_ERROR_PEER_ACCESS_NOT_ENABLED, 
+# 2223
+CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE = 708, 
+# 2230
+CUDA_ERROR_CONTEXT_IS_DESTROYED, 
+# 2238
+CUDA_ERROR_ASSERT, 
+# 2245
+CUDA_ERROR_TOO_MANY_PEERS, 
+# 2251
+CUDA_ERROR_HOST_MEMORY_ALREADY_REGISTERED, 
+# 2257
+CUDA_ERROR_HOST_MEMORY_NOT_REGISTERED, 
+# 2266 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_HARDWARE_STACK_ERROR, 
+# 2274
+CUDA_ERROR_ILLEGAL_INSTRUCTION, 
+# 2283 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_MISALIGNED_ADDRESS, 
+# 2294 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_INVALID_ADDRESS_SPACE, 
+# 2302
+CUDA_ERROR_INVALID_PC, 
+# 2313 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_LAUNCH_FAILED, 
+# 2322 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_COOPERATIVE_LAUNCH_TOO_LARGE, 
+# 2327
+CUDA_ERROR_NOT_PERMITTED = 800, 
+# 2333
+CUDA_ERROR_NOT_SUPPORTED, 
+# 2342 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_SYSTEM_NOT_READY, 
+# 2349
+CUDA_ERROR_SYSTEM_DRIVER_MISMATCH, 
+# 2358 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_COMPAT_NOT_SUPPORTED_ON_DEVICE, 
+# 2363
+CUDA_ERROR_MPS_CONNECTION_FAILED, 
+# 2368
+CUDA_ERROR_MPS_RPC_FAILURE, 
+# 2374
+CUDA_ERROR_MPS_SERVER_NOT_READY, 
+# 2379
+CUDA_ERROR_MPS_MAX_CLIENTS_REACHED, 
+# 2384
+CUDA_ERROR_MPS_MAX_CONNECTIONS_REACHED, 
+# 2389
+CUDA_ERROR_MPS_CLIENT_TERMINATED, 
+# 2394
+CUDA_ERROR_CDP_NOT_SUPPORTED, 
+# 2399
+CUDA_ERROR_CDP_VERSION_MISMATCH, 
+# 2405
+CUDA_ERROR_STREAM_CAPTURE_UNSUPPORTED = 900, 
+# 2411
+CUDA_ERROR_STREAM_CAPTURE_INVALIDATED, 
+# 2417
+CUDA_ERROR_STREAM_CAPTURE_MERGE, 
+# 2422
+CUDA_ERROR_STREAM_CAPTURE_UNMATCHED, 
+# 2428
+CUDA_ERROR_STREAM_CAPTURE_UNJOINED, 
+# 2435
+CUDA_ERROR_STREAM_CAPTURE_ISOLATION, 
+# 2441
+CUDA_ERROR_STREAM_CAPTURE_IMPLICIT, 
+# 2447
+CUDA_ERROR_CAPTURED_EVENT, 
+# 2454
+CUDA_ERROR_STREAM_CAPTURE_WRONG_THREAD, 
+# 2459
+CUDA_ERROR_TIMEOUT, 
+# 2465
+CUDA_ERROR_GRAPH_EXEC_UPDATE_FAILURE, 
+# 2475 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUDA_ERROR_EXTERNAL_DEVICE, 
+# 2480
+CUDA_ERROR_INVALID_CLUSTER_SIZE, 
+# 2485
+CUDA_ERROR_UNKNOWN = 999
+# 2486
+} CUresult; 
+# 2497
+typedef 
+# 2491
+enum CUdevice_P2PAttribute_enum { 
+# 2492
+CU_DEVICE_P2P_ATTRIBUTE_PERFORMANCE_RANK = 1, 
+# 2493
+CU_DEVICE_P2P_ATTRIBUTE_ACCESS_SUPPORTED, 
+# 2494
+CU_DEVICE_P2P_ATTRIBUTE_NATIVE_ATOMIC_SUPPORTED, 
+# 2495
+CU_DEVICE_P2P_ATTRIBUTE_ACCESS_ACCESS_SUPPORTED, 
+# 2496
+CU_DEVICE_P2P_ATTRIBUTE_CUDA_ARRAY_ACCESS_SUPPORTED = 4
+# 2497
+} CUdevice_P2PAttribute; 
+# 2505
+typedef void (*CUstreamCallback)(CUstream hStream, CUresult status, void * userData); 
+# 2513
+typedef ::size_t (*CUoccupancyB2DSize)(int blockSize); 
+# 2599 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 2578
+struct CUDA_MEMCPY2D_st { 
+# 2579
+::size_t srcXInBytes; 
+# 2580
+::size_t srcY; 
+# 2582
+CUmemorytype srcMemoryType; 
+# 2583
+const void *srcHost; 
+# 2584
+CUdeviceptr srcDevice; 
+# 2585
+CUarray srcArray; 
+# 2586
+::size_t srcPitch; 
+# 2588
+::size_t dstXInBytes; 
+# 2589
+::size_t dstY; 
+# 2591
+CUmemorytype dstMemoryType; 
+# 2592
+void *dstHost; 
+# 2593
+CUdeviceptr dstDevice; 
+# 2594
+CUarray dstArray; 
+# 2595
+::size_t dstPitch; 
+# 2597
+::size_t WidthInBytes; 
+# 2598
+::size_t Height; 
+# 2599
+} CUDA_MEMCPY2D_v2; 
+# 2600
+typedef CUDA_MEMCPY2D_v2 CUDA_MEMCPY2D; 
+# 2633
+typedef 
+# 2605
+struct CUDA_MEMCPY3D_st { 
+# 2606
+::size_t srcXInBytes; 
+# 2607
+::size_t srcY; 
+# 2608
+::size_t srcZ; 
+# 2609
+::size_t srcLOD; 
+# 2610
+CUmemorytype srcMemoryType; 
+# 2611
+const void *srcHost; 
+# 2612
+CUdeviceptr srcDevice; 
+# 2613
+CUarray srcArray; 
+# 2614
+void *reserved0; 
+# 2615
+::size_t srcPitch; 
+# 2616
+::size_t srcHeight; 
+# 2618
+::size_t dstXInBytes; 
+# 2619
+::size_t dstY; 
+# 2620
+::size_t dstZ; 
+# 2621
+::size_t dstLOD; 
+# 2622
+CUmemorytype dstMemoryType; 
+# 2623
+void *dstHost; 
+# 2624
+CUdeviceptr dstDevice; 
+# 2625
+CUarray dstArray; 
+# 2626
+void *reserved1; 
+# 2627
+::size_t dstPitch; 
+# 2628
+::size_t dstHeight; 
+# 2630
+::size_t WidthInBytes; 
+# 2631
+::size_t Height; 
+# 2632
+::size_t Depth; 
+# 2633
+} CUDA_MEMCPY3D_v2; 
+# 2634
+typedef CUDA_MEMCPY3D_v2 CUDA_MEMCPY3D; 
+# 2667
+typedef 
+# 2639
+struct CUDA_MEMCPY3D_PEER_st { 
+# 2640
+::size_t srcXInBytes; 
+# 2641
+::size_t srcY; 
+# 2642
+::size_t srcZ; 
+# 2643
+::size_t srcLOD; 
+# 2644
+CUmemorytype srcMemoryType; 
+# 2645
+const void *srcHost; 
+# 2646
+CUdeviceptr srcDevice; 
+# 2647
+CUarray srcArray; 
+# 2648
+CUcontext srcContext; 
+# 2649
+::size_t srcPitch; 
+# 2650
+::size_t srcHeight; 
+# 2652
+::size_t dstXInBytes; 
+# 2653
+::size_t dstY; 
+# 2654
+::size_t dstZ; 
+# 2655
+::size_t dstLOD; 
+# 2656
+CUmemorytype dstMemoryType; 
+# 2657
+void *dstHost; 
+# 2658
+CUdeviceptr dstDevice; 
+# 2659
+CUarray dstArray; 
+# 2660
+CUcontext dstContext; 
+# 2661
+::size_t dstPitch; 
+# 2662
+::size_t dstHeight; 
+# 2664
+::size_t WidthInBytes; 
+# 2665
+::size_t Height; 
+# 2666
+::size_t Depth; 
+# 2667
+} CUDA_MEMCPY3D_PEER_v1; 
+# 2668
+typedef CUDA_MEMCPY3D_PEER_v1 CUDA_MEMCPY3D_PEER; 
+# 2680
+typedef 
+# 2673
+struct CUDA_ARRAY_DESCRIPTOR_st { 
+# 2675
+::size_t Width; 
+# 2676
+::size_t Height; 
+# 2678
+CUarray_format Format; 
+# 2679
+unsigned NumChannels; 
+# 2680
+} CUDA_ARRAY_DESCRIPTOR_v2; 
+# 2681
+typedef CUDA_ARRAY_DESCRIPTOR_v2 CUDA_ARRAY_DESCRIPTOR; 
+# 2695
+typedef 
+# 2686
+struct CUDA_ARRAY3D_DESCRIPTOR_st { 
+# 2688
+::size_t Width; 
+# 2689
+::size_t Height; 
+# 2690
+::size_t Depth; 
+# 2692
+CUarray_format Format; 
+# 2693
+unsigned NumChannels; 
+# 2694
+unsigned Flags; 
+# 2695
+} CUDA_ARRAY3D_DESCRIPTOR_v2; 
+# 2696
+typedef CUDA_ARRAY3D_DESCRIPTOR_v2 CUDA_ARRAY3D_DESCRIPTOR; 
+# 2726 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 2706
+struct CUDA_ARRAY_SPARSE_PROPERTIES_st { 
+# 2707
+struct { 
+# 2708
+unsigned width; 
+# 2709
+unsigned height; 
+# 2710
+unsigned depth; 
+# 2711
+} tileExtent; 
+# 2716
+unsigned miptailFirstLevel; 
+# 2720
+unsigned long long miptailSize; 
+# 2724
+unsigned flags; 
+# 2725
+unsigned reserved[4]; 
+# 2726
+} CUDA_ARRAY_SPARSE_PROPERTIES_v1; 
+# 2727
+typedef CUDA_ARRAY_SPARSE_PROPERTIES_v1 CUDA_ARRAY_SPARSE_PROPERTIES; 
+# 2736
+typedef 
+# 2732
+struct CUDA_ARRAY_MEMORY_REQUIREMENTS_st { 
+# 2733
+::size_t size; 
+# 2734
+::size_t alignment; 
+# 2735
+unsigned reserved[4]; 
+# 2736
+} CUDA_ARRAY_MEMORY_REQUIREMENTS_v1; 
+# 2737
+typedef CUDA_ARRAY_MEMORY_REQUIREMENTS_v1 CUDA_ARRAY_MEMORY_REQUIREMENTS; 
+# 2773
+typedef 
+# 2742
+struct CUDA_RESOURCE_DESC_st { 
+# 2744
+CUresourcetype resType; 
+# 2746
+union { 
+# 2747
+struct { 
+# 2748
+CUarray hArray; 
+# 2749
+} array; 
+# 2750
+struct { 
+# 2751
+CUmipmappedArray hMipmappedArray; 
+# 2752
+} mipmap; 
+# 2753
+struct { 
+# 2754
+CUdeviceptr devPtr; 
+# 2755
+CUarray_format format; 
+# 2756
+unsigned numChannels; 
+# 2757
+::size_t sizeInBytes; 
+# 2758
+} linear; 
+# 2759
+struct { 
+# 2760
+CUdeviceptr devPtr; 
+# 2761
+CUarray_format format; 
+# 2762
+unsigned numChannels; 
+# 2763
+::size_t width; 
+# 2764
+::size_t height; 
+# 2765
+::size_t pitchInBytes; 
+# 2766
+} pitch2D; 
+# 2767
+struct { 
+# 2768
+int reserved[32]; 
+# 2769
+} reserved; 
+# 2770
+} res; 
+# 2772
+unsigned flags; 
+# 2773
+} CUDA_RESOURCE_DESC_v1; 
+# 2774
+typedef CUDA_RESOURCE_DESC_v1 CUDA_RESOURCE_DESC; 
+# 2790
+typedef 
+# 2779
+struct CUDA_TEXTURE_DESC_st { 
+# 2780
+CUaddress_mode addressMode[3]; 
+# 2781
+CUfilter_mode filterMode; 
+# 2782
+unsigned flags; 
+# 2783
+unsigned maxAnisotropy; 
+# 2784
+CUfilter_mode mipmapFilterMode; 
+# 2785
+float mipmapLevelBias; 
+# 2786
+float minMipmapLevelClamp; 
+# 2787
+float maxMipmapLevelClamp; 
+# 2788
+float borderColor[4]; 
+# 2789
+int reserved[12]; 
+# 2790
+} CUDA_TEXTURE_DESC_v1; 
+# 2791
+typedef CUDA_TEXTURE_DESC_v1 CUDA_TEXTURE_DESC; 
+# 2833
+typedef 
+# 2796
+enum CUresourceViewFormat_enum { 
+# 2798
+CU_RES_VIEW_FORMAT_NONE, 
+# 2799
+CU_RES_VIEW_FORMAT_UINT_1X8, 
+# 2800
+CU_RES_VIEW_FORMAT_UINT_2X8, 
+# 2801
+CU_RES_VIEW_FORMAT_UINT_4X8, 
+# 2802
+CU_RES_VIEW_FORMAT_SINT_1X8, 
+# 2803
+CU_RES_VIEW_FORMAT_SINT_2X8, 
+# 2804
+CU_RES_VIEW_FORMAT_SINT_4X8, 
+# 2805
+CU_RES_VIEW_FORMAT_UINT_1X16, 
+# 2806
+CU_RES_VIEW_FORMAT_UINT_2X16, 
+# 2807
+CU_RES_VIEW_FORMAT_UINT_4X16, 
+# 2808
+CU_RES_VIEW_FORMAT_SINT_1X16, 
+# 2809
+CU_RES_VIEW_FORMAT_SINT_2X16, 
+# 2810
+CU_RES_VIEW_FORMAT_SINT_4X16, 
+# 2811
+CU_RES_VIEW_FORMAT_UINT_1X32, 
+# 2812
+CU_RES_VIEW_FORMAT_UINT_2X32, 
+# 2813
+CU_RES_VIEW_FORMAT_UINT_4X32, 
+# 2814
+CU_RES_VIEW_FORMAT_SINT_1X32, 
+# 2815
+CU_RES_VIEW_FORMAT_SINT_2X32, 
+# 2816
+CU_RES_VIEW_FORMAT_SINT_4X32, 
+# 2817
+CU_RES_VIEW_FORMAT_FLOAT_1X16, 
+# 2818
+CU_RES_VIEW_FORMAT_FLOAT_2X16, 
+# 2819
+CU_RES_VIEW_FORMAT_FLOAT_4X16, 
+# 2820
+CU_RES_VIEW_FORMAT_FLOAT_1X32, 
+# 2821
+CU_RES_VIEW_FORMAT_FLOAT_2X32, 
+# 2822
+CU_RES_VIEW_FORMAT_FLOAT_4X32, 
+# 2823
+CU_RES_VIEW_FORMAT_UNSIGNED_BC1, 
+# 2824
+CU_RES_VIEW_FORMAT_UNSIGNED_BC2, 
+# 2825
+CU_RES_VIEW_FORMAT_UNSIGNED_BC3, 
+# 2826
+CU_RES_VIEW_FORMAT_UNSIGNED_BC4, 
+# 2827
+CU_RES_VIEW_FORMAT_SIGNED_BC4, 
+# 2828
+CU_RES_VIEW_FORMAT_UNSIGNED_BC5, 
+# 2829
+CU_RES_VIEW_FORMAT_SIGNED_BC5, 
+# 2830
+CU_RES_VIEW_FORMAT_UNSIGNED_BC6H, 
+# 2831
+CU_RES_VIEW_FORMAT_SIGNED_BC6H, 
+# 2832
+CU_RES_VIEW_FORMAT_UNSIGNED_BC7
+# 2833
+} CUresourceViewFormat; 
+# 2849
+typedef 
+# 2838
+struct CUDA_RESOURCE_VIEW_DESC_st { 
+# 2840
+CUresourceViewFormat format; 
+# 2841
+::size_t width; 
+# 2842
+::size_t height; 
+# 2843
+::size_t depth; 
+# 2844
+unsigned firstMipmapLevel; 
+# 2845
+unsigned lastMipmapLevel; 
+# 2846
+unsigned firstLayer; 
+# 2847
+unsigned lastLayer; 
+# 2848
+unsigned reserved[16]; 
+# 2849
+} CUDA_RESOURCE_VIEW_DESC_v1; 
+# 2850
+typedef CUDA_RESOURCE_VIEW_DESC_v1 CUDA_RESOURCE_VIEW_DESC; 
+# 2867 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 2860
+struct CUtensorMap_st { 
+# 2862
+alignas(64) cuuint64_t 
+# 2866
+opaque[16]; 
+# 2867
+} CUtensorMap; 
+# 2886
+typedef 
+# 2872
+enum CUtensorMapDataType_enum { 
+# 2873
+CU_TENSOR_MAP_DATA_TYPE_UINT8, 
+# 2874
+CU_TENSOR_MAP_DATA_TYPE_UINT16, 
+# 2875
+CU_TENSOR_MAP_DATA_TYPE_UINT32, 
+# 2876
+CU_TENSOR_MAP_DATA_TYPE_INT32, 
+# 2877
+CU_TENSOR_MAP_DATA_TYPE_UINT64, 
+# 2878
+CU_TENSOR_MAP_DATA_TYPE_INT64, 
+# 2879
+CU_TENSOR_MAP_DATA_TYPE_FLOAT16, 
+# 2880
+CU_TENSOR_MAP_DATA_TYPE_FLOAT32, 
+# 2881
+CU_TENSOR_MAP_DATA_TYPE_FLOAT64, 
+# 2882
+CU_TENSOR_MAP_DATA_TYPE_BFLOAT16, 
+# 2883
+CU_TENSOR_MAP_DATA_TYPE_FLOAT32_FTZ, 
+# 2884
+CU_TENSOR_MAP_DATA_TYPE_TFLOAT32, 
+# 2885
+CU_TENSOR_MAP_DATA_TYPE_TFLOAT32_FTZ
+# 2886
+} CUtensorMapDataType; 
+# 2895
+typedef 
+# 2891
+enum CUtensorMapInterleave_enum { 
+# 2892
+CU_TENSOR_MAP_INTERLEAVE_NONE, 
+# 2893
+CU_TENSOR_MAP_INTERLEAVE_16B, 
+# 2894
+CU_TENSOR_MAP_INTERLEAVE_32B
+# 2895
+} CUtensorMapInterleave; 
+# 2905
+typedef 
+# 2900
+enum CUtensorMapSwizzle_enum { 
+# 2901
+CU_TENSOR_MAP_SWIZZLE_NONE, 
+# 2902
+CU_TENSOR_MAP_SWIZZLE_32B, 
+# 2903
+CU_TENSOR_MAP_SWIZZLE_64B, 
+# 2904
+CU_TENSOR_MAP_SWIZZLE_128B
+# 2905
+} CUtensorMapSwizzle; 
+# 2915
+typedef 
+# 2910
+enum CUtensorMapL2promotion_enum { 
+# 2911
+CU_TENSOR_MAP_L2_PROMOTION_NONE, 
+# 2912
+CU_TENSOR_MAP_L2_PROMOTION_L2_64B, 
+# 2913
+CU_TENSOR_MAP_L2_PROMOTION_L2_128B, 
+# 2914
+CU_TENSOR_MAP_L2_PROMOTION_L2_256B
+# 2915
+} CUtensorMapL2promotion; 
+# 2923
+typedef 
+# 2920
+enum CUtensorMapFloatOOBfill_enum { 
+# 2921
+CU_TENSOR_MAP_FLOAT_OOB_FILL_NONE, 
+# 2922
+CU_TENSOR_MAP_FLOAT_OOB_FILL_NAN_REQUEST_ZERO_FMA
+# 2923
+} CUtensorMapFloatOOBfill; 
+# 2931
+typedef 
+# 2928
+struct CUDA_POINTER_ATTRIBUTE_P2P_TOKENS_st { 
+# 2929
+unsigned long long p2pToken; 
+# 2930
+unsigned vaSpaceToken; 
+# 2931
+} CUDA_POINTER_ATTRIBUTE_P2P_TOKENS_v1; 
+# 2932
+typedef CUDA_POINTER_ATTRIBUTE_P2P_TOKENS_v1 CUDA_POINTER_ATTRIBUTE_P2P_TOKENS; 
+# 2942
+typedef 
+# 2938
+enum CUDA_POINTER_ATTRIBUTE_ACCESS_FLAGS_enum { 
+# 2939
+CU_POINTER_ATTRIBUTE_ACCESS_FLAG_NONE, 
+# 2940
+CU_POINTER_ATTRIBUTE_ACCESS_FLAG_READ, 
+# 2941
+CU_POINTER_ATTRIBUTE_ACCESS_FLAG_READWRITE = 3
+# 2942
+} CUDA_POINTER_ATTRIBUTE_ACCESS_FLAGS; 
+# 2958
+typedef 
+# 2947
+struct CUDA_LAUNCH_PARAMS_st { 
+# 2948
+CUfunction function; 
+# 2949
+unsigned gridDimX; 
+# 2950
+unsigned gridDimY; 
+# 2951
+unsigned gridDimZ; 
+# 2952
+unsigned blockDimX; 
+# 2953
+unsigned blockDimY; 
+# 2954
+unsigned blockDimZ; 
+# 2955
+unsigned sharedMemBytes; 
+# 2956
+CUstream hStream; 
+# 2957
+void **kernelParams; 
+# 2958
+} CUDA_LAUNCH_PARAMS_v1; 
+# 2959
+typedef CUDA_LAUNCH_PARAMS_v1 CUDA_LAUNCH_PARAMS; 
+# 2997
+typedef 
+# 2964
+enum CUexternalMemoryHandleType_enum { 
+# 2968
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD = 1, 
+# 2972
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32, 
+# 2976
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT, 
+# 2980
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP, 
+# 2984
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE, 
+# 2988
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_RESOURCE, 
+# 2992
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_RESOURCE_KMT, 
+# 2996
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_NVSCIBUF
+# 2997
+} CUexternalMemoryHandleType; 
+# 3091 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 3038 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+struct CUDA_EXTERNAL_MEMORY_HANDLE_DESC_st { 
+# 3042
+CUexternalMemoryHandleType type; 
+# 3043
+union { 
+# 3049
+int fd; 
+# 3065 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+struct { 
+# 3069
+void *handle; 
+# 3074
+const void *name; 
+# 3075
+} win32; 
+# 3080
+const void *nvSciBufObject; 
+# 3081
+} handle; 
+# 3085
+unsigned long long size; 
+# 3089
+unsigned flags; 
+# 3090
+unsigned reserved[16]; 
+# 3091
+} CUDA_EXTERNAL_MEMORY_HANDLE_DESC_v1; 
+# 3092
+typedef CUDA_EXTERNAL_MEMORY_HANDLE_DESC_v1 CUDA_EXTERNAL_MEMORY_HANDLE_DESC; 
+# 3111
+typedef 
+# 3097
+struct CUDA_EXTERNAL_MEMORY_BUFFER_DESC_st { 
+# 3101
+unsigned long long offset; 
+# 3105
+unsigned long long size; 
+# 3109
+unsigned flags; 
+# 3110
+unsigned reserved[16]; 
+# 3111
+} CUDA_EXTERNAL_MEMORY_BUFFER_DESC_v1; 
+# 3112
+typedef CUDA_EXTERNAL_MEMORY_BUFFER_DESC_v1 CUDA_EXTERNAL_MEMORY_BUFFER_DESC; 
+# 3132
+typedef 
+# 3117
+struct CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC_st { 
+# 3122
+unsigned long long offset; 
+# 3126
+CUDA_ARRAY3D_DESCRIPTOR arrayDesc; 
+# 3130
+unsigned numLevels; 
+# 3131
+unsigned reserved[16]; 
+# 3132
+} CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC_v1; 
+# 3133
+typedef CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC_v1 CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC; 
+# 3179
+typedef 
+# 3138
+enum CUexternalSemaphoreHandleType_enum { 
+# 3142
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD = 1, 
+# 3146
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32, 
+# 3150
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT, 
+# 3154
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE, 
+# 3158
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE, 
+# 3162
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_NVSCISYNC, 
+# 3166
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_KEYED_MUTEX, 
+# 3170
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_KEYED_MUTEX_KMT, 
+# 3174
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_TIMELINE_SEMAPHORE_FD, 
+# 3178
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_TIMELINE_SEMAPHORE_WIN32
+# 3179
+} CUexternalSemaphoreHandleType; 
+# 3233 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 3184 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+struct CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC_st { 
+# 3188
+CUexternalSemaphoreHandleType type; 
+# 3189
+union { 
+# 3196
+int fd; 
+# 3212 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+struct { 
+# 3216
+void *handle; 
+# 3221
+const void *name; 
+# 3222
+} win32; 
+# 3226
+const void *nvSciSyncObj; 
+# 3227
+} handle; 
+# 3231
+unsigned flags; 
+# 3232
+unsigned reserved[16]; 
+# 3233
+} CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC_v1; 
+# 3234
+typedef CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC_v1 CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC; 
+# 3281 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 3239 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+struct CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS_st { 
+# 3240
+struct { 
+# 3244
+struct { 
+# 3248
+unsigned long long value; 
+# 3249
+} fence; 
+# 3250
+union { 
+# 3255
+void *fence; 
+# 3256
+unsigned long long reserved; 
+# 3257
+} nvSciSync; 
+# 3261
+struct { 
+# 3265
+unsigned long long key; 
+# 3266
+} keyedMutex; 
+# 3267
+unsigned reserved[12]; 
+# 3268
+} params; 
+# 3279 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+unsigned flags; 
+# 3280
+unsigned reserved[16]; 
+# 3281
+} CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS_v1; 
+# 3282
+typedef CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS_v1 CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS; 
+# 3332 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 3287 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+struct CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS_st { 
+# 3288
+struct { 
+# 3292
+struct { 
+# 3296
+unsigned long long value; 
+# 3297
+} fence; 
+# 3302
+union { 
+# 3303
+void *fence; 
+# 3304
+unsigned long long reserved; 
+# 3305
+} nvSciSync; 
+# 3309
+struct { 
+# 3313
+unsigned long long key; 
+# 3317
+unsigned timeoutMs; 
+# 3318
+} keyedMutex; 
+# 3319
+unsigned reserved[10]; 
+# 3320
+} params; 
+# 3330 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+unsigned flags; 
+# 3331
+unsigned reserved[16]; 
+# 3332
+} CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS_v1; 
+# 3333
+typedef CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS_v1 CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS; 
+# 3342
+typedef 
+# 3338
+struct CUDA_EXT_SEM_SIGNAL_NODE_PARAMS_st { 
+# 3339
+CUexternalSemaphore *extSemArray; 
+# 3340
+const CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS *paramsArray; 
+# 3341
+unsigned numExtSems; 
+# 3342
+} CUDA_EXT_SEM_SIGNAL_NODE_PARAMS_v1; 
+# 3343
+typedef CUDA_EXT_SEM_SIGNAL_NODE_PARAMS_v1 CUDA_EXT_SEM_SIGNAL_NODE_PARAMS; 
+# 3352
+typedef 
+# 3348
+struct CUDA_EXT_SEM_WAIT_NODE_PARAMS_st { 
+# 3349
+CUexternalSemaphore *extSemArray; 
+# 3350
+const CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS *paramsArray; 
+# 3351
+unsigned numExtSems; 
+# 3352
+} CUDA_EXT_SEM_WAIT_NODE_PARAMS_v1; 
+# 3353
+typedef CUDA_EXT_SEM_WAIT_NODE_PARAMS_v1 CUDA_EXT_SEM_WAIT_NODE_PARAMS; 
+# 3355
+typedef unsigned long long CUmemGenericAllocationHandle_v1; 
+# 3356
+typedef CUmemGenericAllocationHandle_v1 CUmemGenericAllocationHandle; 
+# 3367
+typedef 
+# 3361
+enum CUmemAllocationHandleType_enum { 
+# 3362
+CU_MEM_HANDLE_TYPE_NONE, 
+# 3363
+CU_MEM_HANDLE_TYPE_POSIX_FILE_DESCRIPTOR, 
+# 3364
+CU_MEM_HANDLE_TYPE_WIN32, 
+# 3365
+CU_MEM_HANDLE_TYPE_WIN32_KMT = 4, 
+# 3366
+CU_MEM_HANDLE_TYPE_MAX = 2147483647
+# 3367
+} CUmemAllocationHandleType; 
+# 3377
+typedef 
+# 3372
+enum CUmemAccess_flags_enum { 
+# 3373
+CU_MEM_ACCESS_FLAGS_PROT_NONE, 
+# 3374
+CU_MEM_ACCESS_FLAGS_PROT_READ, 
+# 3375
+CU_MEM_ACCESS_FLAGS_PROT_READWRITE = 3, 
+# 3376
+CU_MEM_ACCESS_FLAGS_PROT_MAX = 2147483647
+# 3377
+} CUmemAccess_flags; 
+# 3386
+typedef 
+# 3382
+enum CUmemLocationType_enum { 
+# 3383
+CU_MEM_LOCATION_TYPE_INVALID, 
+# 3384
+CU_MEM_LOCATION_TYPE_DEVICE, 
+# 3385
+CU_MEM_LOCATION_TYPE_MAX = 2147483647
+# 3386
+} CUmemLocationType; 
+# 3399
+typedef 
+# 3391
+enum CUmemAllocationType_enum { 
+# 3392
+CU_MEM_ALLOCATION_TYPE_INVALID, 
+# 3397
+CU_MEM_ALLOCATION_TYPE_PINNED, 
+# 3398
+CU_MEM_ALLOCATION_TYPE_MAX = 2147483647
+# 3399
+} CUmemAllocationType; 
+# 3407
+typedef 
+# 3404
+enum CUmemAllocationGranularity_flags_enum { 
+# 3405
+CU_MEM_ALLOC_GRANULARITY_MINIMUM, 
+# 3406
+CU_MEM_ALLOC_GRANULARITY_RECOMMENDED
+# 3407
+} CUmemAllocationGranularity_flags; 
+# 3416
+typedef 
+# 3412
+enum CUmemRangeHandleType_enum { 
+# 3414
+CU_MEM_RANGE_HANDLE_TYPE_DMA_BUF_FD = 1, 
+# 3415
+CU_MEM_RANGE_HANDLE_TYPE_MAX = 2147483647
+# 3416
+} CUmemRangeHandleType; 
+# 3424
+typedef 
+# 3421
+enum CUarraySparseSubresourceType_enum { 
+# 3422
+CU_ARRAY_SPARSE_SUBRESOURCE_TYPE_SPARSE_LEVEL, 
+# 3423
+CU_ARRAY_SPARSE_SUBRESOURCE_TYPE_MIPTAIL
+# 3424
+} CUarraySparseSubresourceType; 
+# 3432
+typedef 
+# 3429
+enum CUmemOperationType_enum { 
+# 3430
+CU_MEM_OPERATION_TYPE_MAP = 1, 
+# 3431
+CU_MEM_OPERATION_TYPE_UNMAP
+# 3432
+} CUmemOperationType; 
+# 3439
+typedef 
+# 3437
+enum CUmemHandleType_enum { 
+# 3438
+CU_MEM_HANDLE_TYPE_GENERIC
+# 3439
+} CUmemHandleType; 
+# 3483
+typedef 
+# 3444
+struct CUarrayMapInfo_st { 
+# 3445
+CUresourcetype resourceType; 
+# 3447
+union { 
+# 3448
+CUmipmappedArray mipmap; 
+# 3449
+CUarray array; 
+# 3450
+} resource; 
+# 3452
+CUarraySparseSubresourceType subresourceType; 
+# 3454
+union { 
+# 3455
+struct { 
+# 3456
+unsigned level; 
+# 3457
+unsigned layer; 
+# 3458
+unsigned offsetX; 
+# 3459
+unsigned offsetY; 
+# 3460
+unsigned offsetZ; 
+# 3461
+unsigned extentWidth; 
+# 3462
+unsigned extentHeight; 
+# 3463
+unsigned extentDepth; 
+# 3464
+} sparseLevel; 
+# 3465
+struct { 
+# 3466
+unsigned layer; 
+# 3467
+unsigned long long offset; 
+# 3468
+unsigned long long size; 
+# 3469
+} miptail; 
+# 3470
+} subresource; 
+# 3472
+CUmemOperationType memOperationType; 
+# 3473
+CUmemHandleType memHandleType; 
+# 3475
+union { 
+# 3476
+CUmemGenericAllocationHandle memHandle; 
+# 3477
+} memHandle; 
+# 3479
+unsigned long long offset; 
+# 3480
+unsigned deviceBitMask; 
+# 3481
+unsigned flags; 
+# 3482
+unsigned reserved[2]; 
+# 3483
+} CUarrayMapInfo_v1; 
+# 3484
+typedef CUarrayMapInfo_v1 CUarrayMapInfo; 
+# 3492
+typedef 
+# 3489
+struct CUmemLocation_st { 
+# 3490
+CUmemLocationType type; 
+# 3491
+int id; 
+# 3492
+} CUmemLocation_v1; 
+# 3493
+typedef CUmemLocation_v1 CUmemLocation; 
+# 3501
+typedef 
+# 3498
+enum CUmemAllocationCompType_enum { 
+# 3499
+CU_MEM_ALLOCATION_COMP_NONE, 
+# 3500
+CU_MEM_ALLOCATION_COMP_GENERIC
+# 3501
+} CUmemAllocationCompType; 
+# 3543 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 3511 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+struct CUmemAllocationProp_st { 
+# 3513
+CUmemAllocationType type; 
+# 3515
+CUmemAllocationHandleType requestedHandleTypes; 
+# 3517
+CUmemLocation location; 
+# 3525
+void *win32HandleMetaData; 
+# 3526
+struct { 
+# 3537 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+unsigned char compressionType; 
+# 3538
+unsigned char gpuDirectRDMACapable; 
+# 3540
+unsigned short usage; 
+# 3541
+unsigned char reserved[4]; 
+# 3542
+} allocFlags; 
+# 3543
+} CUmemAllocationProp_v1; 
+# 3544
+typedef CUmemAllocationProp_v1 CUmemAllocationProp; 
+# 3552
+typedef 
+# 3549
+enum CUmulticastGranularity_flags_enum { 
+# 3550
+CU_MULTICAST_GRANULARITY_MINIMUM, 
+# 3551
+CU_MULTICAST_GRANULARITY_RECOMMENDED
+# 3552
+} CUmulticastGranularity_flags; 
+# 3577
+typedef 
+# 3557
+struct CUmulticastObjectProp_st { 
+# 3562
+unsigned numDevices; 
+# 3567
+::size_t size; 
+# 3572
+unsigned long long handleTypes; 
+# 3576
+unsigned long long flags; 
+# 3577
+} CUmulticastObjectProp_v1; 
+# 3578
+typedef CUmulticastObjectProp_v1 CUmulticastObjectProp; 
+# 3586
+typedef 
+# 3583
+struct CUmemAccessDesc_st { 
+# 3584
+CUmemLocation location; 
+# 3585
+CUmemAccess_flags flags; 
+# 3586
+} CUmemAccessDesc_v1; 
+# 3587
+typedef CUmemAccessDesc_v1 CUmemAccessDesc; 
+# 3602
+typedef 
+# 3592
+enum CUgraphExecUpdateResult_enum { 
+# 3593
+CU_GRAPH_EXEC_UPDATE_SUCCESS, 
+# 3594
+CU_GRAPH_EXEC_UPDATE_ERROR, 
+# 3595
+CU_GRAPH_EXEC_UPDATE_ERROR_TOPOLOGY_CHANGED, 
+# 3596
+CU_GRAPH_EXEC_UPDATE_ERROR_NODE_TYPE_CHANGED, 
+# 3597
+CU_GRAPH_EXEC_UPDATE_ERROR_FUNCTION_CHANGED, 
+# 3598
+CU_GRAPH_EXEC_UPDATE_ERROR_PARAMETERS_CHANGED, 
+# 3599
+CU_GRAPH_EXEC_UPDATE_ERROR_NOT_SUPPORTED, 
+# 3600
+CU_GRAPH_EXEC_UPDATE_ERROR_UNSUPPORTED_FUNCTION_CHANGE, 
+# 3601
+CU_GRAPH_EXEC_UPDATE_ERROR_ATTRIBUTES_CHANGED
+# 3602
+} CUgraphExecUpdateResult; 
+# 3624
+typedef 
+# 3607
+struct CUgraphExecUpdateResultInfo_st { 
+# 3611
+CUgraphExecUpdateResult result; 
+# 3618
+CUgraphNode errorNode; 
+# 3623
+CUgraphNode errorFromNode; 
+# 3624
+} CUgraphExecUpdateResultInfo_v1; 
+# 3625
+typedef CUgraphExecUpdateResultInfo_v1 CUgraphExecUpdateResultInfo; 
+# 3691 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 3630 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+enum CUmemPool_attribute_enum { 
+# 3639 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_MEMPOOL_ATTR_REUSE_FOLLOW_EVENT_DEPENDENCIES = 1, 
+# 3646
+CU_MEMPOOL_ATTR_REUSE_ALLOW_OPPORTUNISTIC, 
+# 3654
+CU_MEMPOOL_ATTR_REUSE_ALLOW_INTERNAL_DEPENDENCIES, 
+# 3664 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CU_MEMPOOL_ATTR_RELEASE_THRESHOLD, 
+# 3670
+CU_MEMPOOL_ATTR_RESERVED_MEM_CURRENT, 
+# 3677
+CU_MEMPOOL_ATTR_RESERVED_MEM_HIGH, 
+# 3683
+CU_MEMPOOL_ATTR_USED_MEM_CURRENT, 
+# 3690
+CU_MEMPOOL_ATTR_USED_MEM_HIGH
+# 3691
+} CUmemPool_attribute; 
+# 3708
+typedef 
+# 3696
+struct CUmemPoolProps_st { 
+# 3697
+CUmemAllocationType allocType; 
+# 3698
+CUmemAllocationHandleType handleTypes; 
+# 3699
+CUmemLocation location; 
+# 3706
+void *win32SecurityAttributes; 
+# 3707
+unsigned char reserved[64]; 
+# 3708
+} CUmemPoolProps_v1; 
+# 3709
+typedef CUmemPoolProps_v1 CUmemPoolProps; 
+# 3716
+typedef 
+# 3714
+struct CUmemPoolPtrExportData_st { 
+# 3715
+unsigned char reserved[64]; 
+# 3716
+} CUmemPoolPtrExportData_v1; 
+# 3717
+typedef CUmemPoolPtrExportData_v1 CUmemPoolPtrExportData; 
+# 3732
+typedef 
+# 3722
+struct CUDA_MEM_ALLOC_NODE_PARAMS_st { 
+# 3727
+CUmemPoolProps poolProps; 
+# 3728
+const CUmemAccessDesc *accessDescs; 
+# 3729
+::size_t accessDescCount; 
+# 3730
+::size_t bytesize; 
+# 3731
+CUdeviceptr dptr; 
+# 3732
+} CUDA_MEM_ALLOC_NODE_PARAMS; 
+# 3761
+typedef 
+# 3734
+enum CUgraphMem_attribute_enum { 
+# 3739
+CU_GRAPH_MEM_ATTR_USED_MEM_CURRENT, 
+# 3746
+CU_GRAPH_MEM_ATTR_USED_MEM_HIGH, 
+# 3753
+CU_GRAPH_MEM_ATTR_RESERVED_MEM_CURRENT, 
+# 3760
+CU_GRAPH_MEM_ATTR_RESERVED_MEM_HIGH
+# 3761
+} CUgraphMem_attribute; 
+# 3934 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 3931
+enum CUflushGPUDirectRDMAWritesOptions_enum { 
+# 3932
+CU_FLUSH_GPU_DIRECT_RDMA_WRITES_OPTION_HOST = (1 << 0), 
+# 3933
+CU_FLUSH_GPU_DIRECT_RDMA_WRITES_OPTION_MEMOPS
+# 3934
+} CUflushGPUDirectRDMAWritesOptions; 
+# 3943
+typedef 
+# 3939
+enum CUGPUDirectRDMAWritesOrdering_enum { 
+# 3940
+CU_GPU_DIRECT_RDMA_WRITES_ORDERING_NONE, 
+# 3941
+CU_GPU_DIRECT_RDMA_WRITES_ORDERING_OWNER = 100, 
+# 3942
+CU_GPU_DIRECT_RDMA_WRITES_ORDERING_ALL_DEVICES = 200
+# 3943
+} CUGPUDirectRDMAWritesOrdering; 
+# 3951
+typedef 
+# 3948
+enum CUflushGPUDirectRDMAWritesScope_enum { 
+# 3949
+CU_FLUSH_GPU_DIRECT_RDMA_WRITES_TO_OWNER = 100, 
+# 3950
+CU_FLUSH_GPU_DIRECT_RDMA_WRITES_TO_ALL_DEVICES = 200
+# 3951
+} CUflushGPUDirectRDMAWritesScope; 
+# 3958
+typedef 
+# 3956
+enum CUflushGPUDirectRDMAWritesTarget_enum { 
+# 3957
+CU_FLUSH_GPU_DIRECT_RDMA_WRITES_TARGET_CURRENT_CTX
+# 3958
+} CUflushGPUDirectRDMAWritesTarget; 
+# 3979
+typedef 
+# 3963
+enum CUgraphDebugDot_flags_enum { 
+# 3964
+CU_GRAPH_DEBUG_DOT_FLAGS_VERBOSE = (1 << 0), 
+# 3965
+CU_GRAPH_DEBUG_DOT_FLAGS_RUNTIME_TYPES, 
+# 3966
+CU_GRAPH_DEBUG_DOT_FLAGS_KERNEL_NODE_PARAMS = (1 << 2), 
+# 3967
+CU_GRAPH_DEBUG_DOT_FLAGS_MEMCPY_NODE_PARAMS = (1 << 3), 
+# 3968
+CU_GRAPH_DEBUG_DOT_FLAGS_MEMSET_NODE_PARAMS = (1 << 4), 
+# 3969
+CU_GRAPH_DEBUG_DOT_FLAGS_HOST_NODE_PARAMS = (1 << 5), 
+# 3970
+CU_GRAPH_DEBUG_DOT_FLAGS_EVENT_NODE_PARAMS = (1 << 6), 
+# 3971
+CU_GRAPH_DEBUG_DOT_FLAGS_EXT_SEMAS_SIGNAL_NODE_PARAMS = (1 << 7), 
+# 3972
+CU_GRAPH_DEBUG_DOT_FLAGS_EXT_SEMAS_WAIT_NODE_PARAMS = (1 << 8), 
+# 3973
+CU_GRAPH_DEBUG_DOT_FLAGS_KERNEL_NODE_ATTRIBUTES = (1 << 9), 
+# 3974
+CU_GRAPH_DEBUG_DOT_FLAGS_HANDLES = (1 << 10), 
+# 3975
+CU_GRAPH_DEBUG_DOT_FLAGS_MEM_ALLOC_NODE_PARAMS = (1 << 11), 
+# 3976
+CU_GRAPH_DEBUG_DOT_FLAGS_MEM_FREE_NODE_PARAMS = (1 << 12), 
+# 3977
+CU_GRAPH_DEBUG_DOT_FLAGS_BATCH_MEM_OP_NODE_PARAMS = (1 << 13), 
+# 3978
+CU_GRAPH_DEBUG_DOT_FLAGS_EXTRA_TOPO_INFO = (1 << 14)
+# 3979
+} CUgraphDebugDot_flags; 
+# 3986
+typedef 
+# 3984
+enum CUuserObject_flags_enum { 
+# 3985
+CU_USER_OBJECT_NO_DESTRUCTOR_SYNC = 1
+# 3986
+} CUuserObject_flags; 
+# 3993
+typedef 
+# 3991
+enum CUuserObjectRetain_flags_enum { 
+# 3992
+CU_GRAPH_USER_OBJECT_MOVE = 1
+# 3993
+} CUuserObjectRetain_flags; 
+# 4004
+typedef 
+# 3998
+enum CUgraphInstantiate_flags_enum { 
+# 3999
+CUDA_GRAPH_INSTANTIATE_FLAG_AUTO_FREE_ON_LAUNCH = 1, 
+# 4000
+CUDA_GRAPH_INSTANTIATE_FLAG_UPLOAD, 
+# 4001
+CUDA_GRAPH_INSTANTIATE_FLAG_DEVICE_LAUNCH = 4, 
+# 4002
+CUDA_GRAPH_INSTANTIATE_FLAG_USE_NODE_PRIORITY = 8
+# 4004
+} CUgraphInstantiate_flags; 
+# 4051 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGetErrorString(CUresult error, const char ** pStr); 
+# 4072 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGetErrorName(CUresult error, const char ** pStr); 
+# 4105 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuInit(unsigned Flags); 
+# 4143 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDriverGetVersion(int * driverVersion); 
+# 4186 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGet(CUdevice * device, int ordinal); 
+# 4215 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetCount(int * count); 
+# 4247 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetName(char * name, int len, CUdevice dev); 
+# 4280 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetUuid(CUuuid * uuid, CUdevice dev); 
+# 4309 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetUuid_v2(CUuuid * uuid, CUdevice dev); 
+# 4338 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetLuid(char * luid, unsigned * deviceNodeMask, CUdevice dev); 
+# 4367 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceTotalMem_v2(::size_t * bytes, CUdevice dev); 
+# 4398 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetTexture1DLinearMaxWidth(::size_t * maxWidthInElements, CUarray_format format, unsigned numChannels, CUdevice dev); 
+# 4621 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetAttribute(int * pi, CUdevice_attribute attrib, CUdevice dev); 
+# 4684 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetNvSciSyncAttributes(void * nvSciSyncAttrList, CUdevice dev, int flags); 
+# 4702 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceSetMemPool(CUdevice dev, CUmemoryPool pool); 
+# 4718 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetMemPool(CUmemoryPool * pool, CUdevice dev); 
+# 4736 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetDefaultMemPool(CUmemoryPool * pool_out, CUdevice dev); 
+# 4767 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetExecAffinitySupport(int * pi, CUexecAffinityType type, CUdevice dev); 
+# 4798 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuFlushGPUDirectRDMAWrites(CUflushGPUDirectRDMAWritesTarget target, CUflushGPUDirectRDMAWritesScope scope); 
+# 4876 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuDeviceGetProperties(CUdevprop * prop, CUdevice dev); 
+# 4910 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuDeviceComputeCapability(int * major, int * minor, CUdevice dev); 
+# 4977 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDevicePrimaryCtxRetain(CUcontext * pctx, CUdevice dev); 
+# 5018 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDevicePrimaryCtxRelease_v2(CUdevice dev); 
+# 5109 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDevicePrimaryCtxSetFlags_v2(CUdevice dev, unsigned flags); 
+# 5136 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDevicePrimaryCtxGetState(CUdevice dev, unsigned * flags, int * active); 
+# 5176 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDevicePrimaryCtxReset_v2(CUdevice dev); 
+# 5316 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxCreate_v2(CUcontext * pctx, unsigned flags, CUdevice dev); 
+# 5452 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxCreate_v3(CUcontext * pctx, CUexecAffinityParam * paramsArray, int numParams, unsigned flags, CUdevice dev); 
+# 5497 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxDestroy_v2(CUcontext ctx); 
+# 5531 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxPushCurrent_v2(CUcontext ctx); 
+# 5565 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxPopCurrent_v2(CUcontext * pctx); 
+# 5595 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxSetCurrent(CUcontext ctx); 
+# 5618 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetCurrent(CUcontext * pctx); 
+# 5648 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetDevice(CUdevice * device); 
+# 5677 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetFlags(unsigned * flags); 
+# 5704 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxSetFlags(unsigned flags); 
+# 5735 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetId(CUcontext ctx, unsigned long long * ctxId); 
+# 5765 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxSynchronize(); 
+# 5864 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxSetLimit(CUlimit limit, ::size_t value); 
+# 5906 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetLimit(::size_t * pvalue, CUlimit limit); 
+# 5950 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetCacheConfig(CUfunc_cache * pconfig); 
+# 6002 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxSetCacheConfig(CUfunc_cache config); 
+# 6044 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetSharedMemConfig(CUsharedconfig * pConfig); 
+# 6097 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxSetSharedMemConfig(CUsharedconfig config); 
+# 6135 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetApiVersion(CUcontext ctx, unsigned * version); 
+# 6175 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetStreamPriorityRange(int * leastPriority, int * greatestPriority); 
+# 6191 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxResetPersistingL2Cache(); 
+# 6215 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxGetExecAffinity(CUexecAffinityParam * pExecAffinity, CUexecAffinityType type); 
+# 6271 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuCtxAttach(CUcontext * pctx, unsigned flags); 
+# 6307 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuCtxDetach(CUcontext ctx); 
+# 6363 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuModuleLoad(CUmodule * module, const char * fname); 
+# 6401 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuModuleLoadData(CUmodule * module, const void * image); 
+# 6445 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuModuleLoadDataEx(CUmodule * module, const void * image, unsigned numOptions, CUjit_option * options, void ** optionValues); 
+# 6488 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuModuleLoadFatBinary(CUmodule * module, const void * fatCubin); 
+# 6514 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuModuleUnload(CUmodule hmod); 
+# 6522
+typedef 
+# 6519
+enum CUmoduleLoadingMode_enum { 
+# 6520
+CU_MODULE_EAGER_LOADING = 1, 
+# 6521
+CU_MODULE_LAZY_LOADING
+# 6522
+} CUmoduleLoadingMode; 
+# 6540 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuModuleGetLoadingMode(CUmoduleLoadingMode * mode); 
+# 6570 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuModuleGetFunction(CUfunction * hfunc, CUmodule hmod, const char * name); 
+# 6605 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuModuleGetGlobal_v2(CUdeviceptr * dptr, ::size_t * bytes, CUmodule hmod, const char * name); 
+# 6648 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLinkCreate_v2(unsigned numOptions, CUjit_option * options, void ** optionValues, CUlinkState * stateOut); 
+# 6688 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLinkAddData_v2(CUlinkState state, CUjitInputType type, void * data, ::size_t size, const char * name, unsigned numOptions, CUjit_option * options, void ** optionValues); 
+# 6730 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLinkAddFile_v2(CUlinkState state, CUjitInputType type, const char * path, unsigned numOptions, CUjit_option * options, void ** optionValues); 
+# 6757 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLinkComplete(CUlinkState state, void ** cubinOut, ::size_t * sizeOut); 
+# 6771 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLinkDestroy(CUlinkState state); 
+# 6821 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuModuleGetTexRef(CUtexref * pTexRef, CUmodule hmod, const char * name); 
+# 6855 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuModuleGetSurfRef(CUsurfref * pSurfRef, CUmodule hmod, const char * name); 
+# 6918 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLibraryLoadData(CUlibrary * library, const void * code, CUjit_option * jitOptions, void ** jitOptionsValues, unsigned numJitOptions, CUlibraryOption * libraryOptions, void ** libraryOptionValues, unsigned numLibraryOptions); 
+# 6968 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLibraryLoadFromFile(CUlibrary * library, const char * fileName, CUjit_option * jitOptions, void ** jitOptionsValues, unsigned numJitOptions, CUlibraryOption * libraryOptions, void ** libraryOptionValues, unsigned numLibraryOptions); 
+# 6989 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLibraryUnload(CUlibrary library); 
+# 7016 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLibraryGetKernel(CUkernel * pKernel, CUlibrary library, const char * name); 
+# 7042 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLibraryGetModule(CUmodule * pMod, CUlibrary library); 
+# 7070 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuKernelGetFunction(CUfunction * pFunc, CUkernel kernel); 
+# 7102 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLibraryGetGlobal(CUdeviceptr * dptr, ::size_t * bytes, CUlibrary library, const char * name); 
+# 7134 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLibraryGetManaged(CUdeviceptr * dptr, ::size_t * bytes, CUlibrary library, const char * name); 
+# 7160 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLibraryGetUnifiedFunction(void ** fptr, CUlibrary library, const char * symbol); 
+# 7248 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuKernelGetAttribute(int * pi, CUfunction_attribute attrib, CUkernel kernel, CUdevice dev); 
+# 7326 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuKernelSetAttribute(CUfunction_attribute attrib, int val, CUkernel kernel, CUdevice dev); 
+# 7385 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuKernelSetCacheConfig(CUkernel kernel, CUfunc_cache config, CUdevice dev); 
+# 7442 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemGetInfo_v2(::size_t * free, ::size_t * total); 
+# 7476 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemAlloc_v2(CUdeviceptr * dptr, ::size_t bytesize); 
+# 7538 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemAllocPitch_v2(CUdeviceptr * dptr, ::size_t * pPitch, ::size_t WidthInBytes, ::size_t Height, unsigned ElementSizeBytes); 
+# 7574 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemFree_v2(CUdeviceptr dptr); 
+# 7608 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemGetAddressRange_v2(CUdeviceptr * pbase, ::size_t * psize, CUdeviceptr dptr); 
+# 7655 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemAllocHost_v2(void ** pp, ::size_t bytesize); 
+# 7685 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemFreeHost(void * p); 
+# 7764 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemHostAlloc(void ** pp, ::size_t bytesize, unsigned Flags); 
+# 7817 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemHostGetDevicePointer_v2(CUdeviceptr * pdptr, void * p, unsigned Flags); 
+# 7844 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemHostGetFlags(unsigned * pFlags, void * p); 
+# 7954 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemAllocManaged(CUdeviceptr * dptr, ::size_t bytesize, unsigned flags); 
+# 7983 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetByPCIBusId(CUdevice * dev, const char * pciBusId); 
+# 8015 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetPCIBusId(char * pciBusId, int len, CUdevice dev); 
+# 8062 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuIpcGetEventHandle(CUipcEventHandle * pHandle, CUevent event); 
+# 8104 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuIpcOpenEventHandle(CUevent * phEvent, CUipcEventHandle handle); 
+# 8147 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuIpcGetMemHandle(CUipcMemHandle * pHandle, CUdeviceptr dptr); 
+# 8207 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuIpcOpenMemHandle_v2(CUdeviceptr * pdptr, CUipcMemHandle handle, unsigned Flags); 
+# 8243 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuIpcCloseMemHandle(CUdeviceptr dptr); 
+# 8334 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemHostRegister_v2(void * p, ::size_t bytesize, unsigned Flags); 
+# 8360 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemHostUnregister(void * p); 
+# 8400 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpy(CUdeviceptr dst, CUdeviceptr src, ::size_t ByteCount); 
+# 8430 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyPeer(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, ::size_t ByteCount); 
+# 8466 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyHtoD_v2(CUdeviceptr dstDevice, const void * srcHost, ::size_t ByteCount); 
+# 8502 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyDtoH_v2(void * dstHost, CUdeviceptr srcDevice, ::size_t ByteCount); 
+# 8538 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyDtoD_v2(CUdeviceptr dstDevice, CUdeviceptr srcDevice, ::size_t ByteCount); 
+# 8574 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyDtoA_v2(CUarray dstArray, ::size_t dstOffset, CUdeviceptr srcDevice, ::size_t ByteCount); 
+# 8612 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyAtoD_v2(CUdeviceptr dstDevice, CUarray srcArray, ::size_t srcOffset, ::size_t ByteCount); 
+# 8649 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyHtoA_v2(CUarray dstArray, ::size_t dstOffset, const void * srcHost, ::size_t ByteCount); 
+# 8686 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyAtoH_v2(void * dstHost, CUarray srcArray, ::size_t srcOffset, ::size_t ByteCount); 
+# 8726 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyAtoA_v2(CUarray dstArray, ::size_t dstOffset, CUarray srcArray, ::size_t srcOffset, ::size_t ByteCount); 
+# 8890 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpy2D_v2(const CUDA_MEMCPY2D * pCopy); 
+# 9052 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpy2DUnaligned_v2(const CUDA_MEMCPY2D * pCopy); 
+# 9221 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpy3D_v2(const CUDA_MEMCPY3D * pCopy); 
+# 9245 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpy3DPeer(const CUDA_MEMCPY3D_PEER * pCopy); 
+# 9290 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyAsync(CUdeviceptr dst, CUdeviceptr src, ::size_t ByteCount, CUstream hStream); 
+# 9323 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyPeerAsync(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, ::size_t ByteCount, CUstream hStream); 
+# 9364 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyHtoDAsync_v2(CUdeviceptr dstDevice, const void * srcHost, ::size_t ByteCount, CUstream hStream); 
+# 9405 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyDtoHAsync_v2(void * dstHost, CUdeviceptr srcDevice, ::size_t ByteCount, CUstream hStream); 
+# 9446 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyDtoDAsync_v2(CUdeviceptr dstDevice, CUdeviceptr srcDevice, ::size_t ByteCount, CUstream hStream); 
+# 9488 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyHtoAAsync_v2(CUarray dstArray, ::size_t dstOffset, const void * srcHost, ::size_t ByteCount, CUstream hStream); 
+# 9530 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpyAtoHAsync_v2(void * dstHost, CUarray srcArray, ::size_t srcOffset, ::size_t ByteCount, CUstream hStream); 
+# 9699 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpy2DAsync_v2(const CUDA_MEMCPY2D * pCopy, CUstream hStream); 
+# 9873 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpy3DAsync_v2(const CUDA_MEMCPY3D * pCopy, CUstream hStream); 
+# 9899 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemcpy3DPeerAsync(const CUDA_MEMCPY3D_PEER * pCopy, CUstream hStream); 
+# 9934 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD8_v2(CUdeviceptr dstDevice, unsigned char uc, ::size_t N); 
+# 9969 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD16_v2(CUdeviceptr dstDevice, unsigned short us, ::size_t N); 
+# 10004 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD32_v2(CUdeviceptr dstDevice, unsigned ui, ::size_t N); 
+# 10044 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD2D8_v2(CUdeviceptr dstDevice, ::size_t dstPitch, unsigned char uc, ::size_t Width, ::size_t Height); 
+# 10085 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD2D16_v2(CUdeviceptr dstDevice, ::size_t dstPitch, unsigned short us, ::size_t Width, ::size_t Height); 
+# 10126 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD2D32_v2(CUdeviceptr dstDevice, ::size_t dstPitch, unsigned ui, ::size_t Width, ::size_t Height); 
+# 10163 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD8Async(CUdeviceptr dstDevice, unsigned char uc, ::size_t N, CUstream hStream); 
+# 10200 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD16Async(CUdeviceptr dstDevice, unsigned short us, ::size_t N, CUstream hStream); 
+# 10236 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD32Async(CUdeviceptr dstDevice, unsigned ui, ::size_t N, CUstream hStream); 
+# 10278 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD2D8Async(CUdeviceptr dstDevice, ::size_t dstPitch, unsigned char uc, ::size_t Width, ::size_t Height, CUstream hStream); 
+# 10321 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD2D16Async(CUdeviceptr dstDevice, ::size_t dstPitch, unsigned short us, ::size_t Width, ::size_t Height, CUstream hStream); 
+# 10364 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemsetD2D32Async(CUdeviceptr dstDevice, ::size_t dstPitch, unsigned ui, ::size_t Width, ::size_t Height, CUstream hStream); 
+# 10468 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuArrayCreate_v2(CUarray * pHandle, const CUDA_ARRAY_DESCRIPTOR * pAllocateArray); 
+# 10502 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuArrayGetDescriptor_v2(CUDA_ARRAY_DESCRIPTOR * pArrayDescriptor, CUarray hArray); 
+# 10526 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuArrayGetSparseProperties(CUDA_ARRAY_SPARSE_PROPERTIES * sparseProperties, CUarray array); 
+# 10551 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMipmappedArrayGetSparseProperties(CUDA_ARRAY_SPARSE_PROPERTIES * sparseProperties, CUmipmappedArray mipmap); 
+# 10574 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuArrayGetMemoryRequirements(CUDA_ARRAY_MEMORY_REQUIREMENTS * memoryRequirements, CUarray array, CUdevice device); 
+# 10598 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMipmappedArrayGetMemoryRequirements(CUDA_ARRAY_MEMORY_REQUIREMENTS * memoryRequirements, CUmipmappedArray mipmap, CUdevice device); 
+# 10631 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuArrayGetPlane(CUarray * pPlaneArray, CUarray hArray, unsigned planeIdx); 
+# 10662 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuArrayDestroy(CUarray hArray); 
+# 10842 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuArray3DCreate_v2(CUarray * pHandle, const CUDA_ARRAY3D_DESCRIPTOR * pAllocateArray); 
+# 10880 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuArray3DGetDescriptor_v2(CUDA_ARRAY3D_DESCRIPTOR * pArrayDescriptor, CUarray hArray); 
+# 11022 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMipmappedArrayCreate(CUmipmappedArray * pHandle, const CUDA_ARRAY3D_DESCRIPTOR * pMipmappedArrayDesc, unsigned numMipmapLevels); 
+# 11052 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMipmappedArrayGetLevel(CUarray * pLevelArray, CUmipmappedArray hMipmappedArray, unsigned level); 
+# 11077 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMipmappedArrayDestroy(CUmipmappedArray hMipmappedArray); 
+# 11110 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemGetHandleForAddressRange(void * handle, CUdeviceptr dptr, ::size_t size, CUmemRangeHandleType handleType, unsigned long long flags); 
+# 11151 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemAddressReserve(CUdeviceptr * ptr, ::size_t size, ::size_t alignment, CUdeviceptr addr, unsigned long long flags); 
+# 11172 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemAddressFree(CUdeviceptr ptr, ::size_t size); 
+# 11211 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemCreate(CUmemGenericAllocationHandle * handle, ::size_t size, const CUmemAllocationProp * prop, unsigned long long flags); 
+# 11238 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemRelease(CUmemGenericAllocationHandle handle); 
+# 11288 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemMap(CUdeviceptr ptr, ::size_t size, ::size_t offset, CUmemGenericAllocationHandle handle, unsigned long long flags); 
+# 11423 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemMapArrayAsync(CUarrayMapInfo * mapInfoList, unsigned count, CUstream hStream); 
+# 11452 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemUnmap(CUdeviceptr ptr, ::size_t size); 
+# 11483 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemSetAccess(CUdeviceptr ptr, ::size_t size, const CUmemAccessDesc * desc, ::size_t count); 
+# 11502 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemGetAccess(unsigned long long * flags, const CUmemLocation * location, CUdeviceptr ptr); 
+# 11535 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemExportToShareableHandle(void * shareableHandle, CUmemGenericAllocationHandle handle, CUmemAllocationHandleType handleType, unsigned long long flags); 
+# 11562 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemImportFromShareableHandle(CUmemGenericAllocationHandle * handle, void * osHandle, CUmemAllocationHandleType shHandleType); 
+# 11584 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemGetAllocationGranularity(::size_t * granularity, const CUmemAllocationProp * prop, CUmemAllocationGranularity_flags option); 
+# 11601 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemGetAllocationPropertiesFromHandle(CUmemAllocationProp * prop, CUmemGenericAllocationHandle handle); 
+# 11625 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemRetainAllocationHandle(CUmemGenericAllocationHandle * handle, void * addr); 
+# 11682 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemFreeAsync(CUdeviceptr dptr, CUstream hStream); 
+# 11715 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemAllocAsync(CUdeviceptr * dptr, ::size_t bytesize, CUstream hStream); 
+# 11741 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolTrimTo(CUmemoryPool pool, ::size_t minBytesToKeep); 
+# 11784 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void * value); 
+# 11831 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolGetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void * value); 
+# 11848 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc * map, ::size_t count); 
+# 11862 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolGetAccess(CUmemAccess_flags * flags, CUmemoryPool memPool, CUmemLocation * location); 
+# 11884 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolCreate(CUmemoryPool * pool, const CUmemPoolProps * poolProps); 
+# 11907 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolDestroy(CUmemoryPool pool); 
+# 11945 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemAllocFromPoolAsync(CUdeviceptr * dptr, ::size_t bytesize, CUmemoryPool pool, CUstream hStream); 
+# 11974 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolExportToShareableHandle(void * handle_out, CUmemoryPool pool, CUmemAllocationHandleType handleType, unsigned long long flags); 
+# 11998 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolImportFromShareableHandle(CUmemoryPool * pool_out, void * handle, CUmemAllocationHandleType handleType, unsigned long long flags); 
+# 12022 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolExportPointer(CUmemPoolPtrExportData * shareData_out, CUdeviceptr ptr); 
+# 12051 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPoolImportPointer(CUdeviceptr * ptr_out, CUmemoryPool pool, CUmemPoolPtrExportData * shareData); 
+# 12122 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMulticastCreate(CUmemGenericAllocationHandle * mcHandle, const CUmulticastObjectProp * prop); 
+# 12155 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMulticastAddDevice(CUmemGenericAllocationHandle mcHandle, CUdevice dev); 
+# 12204 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMulticastBindMem(CUmemGenericAllocationHandle mcHandle, ::size_t mcOffset, CUmemGenericAllocationHandle memHandle, ::size_t memOffset, ::size_t size, unsigned long long flags); 
+# 12251 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMulticastBindAddr(CUmemGenericAllocationHandle mcHandle, ::size_t mcOffset, CUdeviceptr memptr, ::size_t size, unsigned long long flags); 
+# 12285 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMulticastUnbind(CUmemGenericAllocationHandle mcHandle, CUdevice dev, ::size_t mcOffset, ::size_t size); 
+# 12309 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMulticastGetGranularity(::size_t * granularity, const CUmulticastObjectProp * prop, CUmulticastGranularity_flags option); 
+# 12594 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuPointerGetAttribute(void * data, CUpointer_attribute attribute, CUdeviceptr ptr); 
+# 12662 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemPrefetchAsync(CUdeviceptr devPtr, ::size_t count, CUdevice dstDevice, CUstream hStream); 
+# 12776 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemAdvise(CUdeviceptr devPtr, ::size_t count, CUmem_advise advice, CUdevice device); 
+# 12834 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemRangeGetAttribute(void * data, ::size_t dataSize, CUmem_range_attribute attribute, CUdeviceptr devPtr, ::size_t count); 
+# 12874 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuMemRangeGetAttributes(void ** data, ::size_t * dataSizes, CUmem_range_attribute * attributes, ::size_t numAttributes, CUdeviceptr devPtr, ::size_t count); 
+# 12916 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuPointerSetAttribute(const void * value, CUpointer_attribute attribute, CUdeviceptr ptr); 
+# 12965 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuPointerGetAttributes(unsigned numAttributes, CUpointer_attribute * attributes, void ** data, CUdeviceptr ptr); 
+# 13016 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamCreate(CUstream * phStream, unsigned Flags); 
+# 13065 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamCreateWithPriority(CUstream * phStream, unsigned flags, int priority); 
+# 13096 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamGetPriority(CUstream hStream, int * priority); 
+# 13124 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamGetFlags(CUstream hStream, unsigned * flags); 
+# 13157 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamGetId(CUstream hStream, unsigned long long * streamId); 
+# 13201 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamGetCtx(CUstream hStream, CUcontext * pctx); 
+# 13238 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned Flags); 
+# 13313 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void * userData, unsigned flags); 
+# 13351 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamBeginCapture_v2(CUstream hStream, CUstreamCaptureMode mode); 
+# 13404 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuThreadExchangeStreamCaptureMode(CUstreamCaptureMode * mode); 
+# 13434 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamEndCapture(CUstream hStream, CUgraph * phGraph); 
+# 13474 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamIsCapturing(CUstream hStream, CUstreamCaptureStatus * captureStatus); 
+# 13522 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamGetCaptureInfo_v2(CUstream hStream, CUstreamCaptureStatus * captureStatus_out, cuuint64_t * id_out, CUgraph * graph_out, const CUgraphNode ** dependencies_out, ::size_t * numDependencies_out); 
+# 13554 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode * dependencies, ::size_t numDependencies, unsigned flags); 
+# 13642 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, ::size_t length, unsigned flags); 
+# 13672 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamQuery(CUstream hStream); 
+# 13701 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamSynchronize(CUstream hStream); 
+# 13731 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamDestroy_v2(CUstream hStream); 
+# 13751 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamCopyAttributes(CUstream dst, CUstream src); 
+# 13772 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamGetAttribute(CUstream hStream, CUstreamAttrID attr, CUstreamAttrValue * value_out); 
+# 13795 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamSetAttribute(CUstream hStream, CUstreamAttrID attr, const CUstreamAttrValue * value); 
+# 13852 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuEventCreate(CUevent * phEvent, unsigned Flags); 
+# 13894 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuEventRecord(CUevent hEvent, CUstream hStream); 
+# 13943 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuEventRecordWithFlags(CUevent hEvent, CUstream hStream, unsigned flags); 
+# 13975 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuEventQuery(CUevent hEvent); 
+# 14006 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuEventSynchronize(CUevent hEvent); 
+# 14035 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuEventDestroy_v2(CUevent hEvent); 
+# 14080 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuEventElapsedTime(float * pMilliseconds, CUevent hStart, CUevent hEnd); 
+# 14259 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuImportExternalMemory(CUexternalMemory * extMem_out, const CUDA_EXTERNAL_MEMORY_HANDLE_DESC * memHandleDesc); 
+# 14313 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuExternalMemoryGetMappedBuffer(CUdeviceptr * devPtr, CUexternalMemory extMem, const CUDA_EXTERNAL_MEMORY_BUFFER_DESC * bufferDesc); 
+# 14366 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuExternalMemoryGetMappedMipmappedArray(CUmipmappedArray * mipmap, CUexternalMemory extMem, const CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC * mipmapDesc); 
+# 14388 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDestroyExternalMemory(CUexternalMemory extMem); 
+# 14546 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuImportExternalSemaphore(CUexternalSemaphore * extSem_out, const CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC * semHandleDesc); 
+# 14628 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuSignalExternalSemaphoresAsync(const CUexternalSemaphore * extSemArray, const CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS * paramsArray, unsigned numExtSems, CUstream stream); 
+# 14704 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuWaitExternalSemaphoresAsync(const CUexternalSemaphore * extSemArray, const CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS * paramsArray, unsigned numExtSems, CUstream stream); 
+# 14725 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDestroyExternalSemaphore(CUexternalSemaphore extSem); 
+# 14811 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamWaitValue32_v2(CUstream stream, CUdeviceptr addr, cuuint32_t value, unsigned flags); 
+# 14854 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamWaitValue64_v2(CUstream stream, CUdeviceptr addr, cuuint64_t value, unsigned flags); 
+# 14883 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamWriteValue32_v2(CUstream stream, CUdeviceptr addr, cuuint32_t value, unsigned flags); 
+# 14914 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamWriteValue64_v2(CUstream stream, CUdeviceptr addr, cuuint64_t value, unsigned flags); 
+# 14957 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuStreamBatchMemOp_v2(CUstream stream, unsigned count, CUstreamBatchMemOpParams * paramArray, unsigned flags); 
+# 15053 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuFuncGetAttribute(int * pi, CUfunction_attribute attrib, CUfunction hfunc); 
+# 15117 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuFuncSetAttribute(CUfunction hfunc, CUfunction_attribute attrib, int value); 
+# 15162 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuFuncSetCacheConfig(CUfunction hfunc, CUfunc_cache config); 
+# 15214 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuFuncSetSharedMemConfig(CUfunction hfunc, CUsharedconfig config); 
+# 15240 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuFuncGetModule(CUmodule * hmod, CUfunction hfunc); 
+# 15361 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLaunchKernel(CUfunction f, unsigned gridDimX, unsigned gridDimY, unsigned gridDimZ, unsigned blockDimX, unsigned blockDimY, unsigned blockDimZ, unsigned sharedMemBytes, CUstream hStream, void ** kernelParams, void ** extra); 
+# 15555 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLaunchKernelEx(const CUlaunchConfig * config, CUfunction f, void ** kernelParams, void ** extra); 
+# 15654 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLaunchCooperativeKernel(CUfunction f, unsigned gridDimX, unsigned gridDimY, unsigned gridDimZ, unsigned blockDimX, unsigned blockDimY, unsigned blockDimZ, unsigned sharedMemBytes, CUstream hStream, void ** kernelParams); 
+# 15803 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuLaunchCooperativeKernelMultiDevice(CUDA_LAUNCH_PARAMS * launchParamsList, unsigned numDevices, unsigned flags); 
+# 15868 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuLaunchHostFunc(CUstream hStream, CUhostFn fn, void * userData); 
+# 15918 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuFuncSetBlockShape(CUfunction hfunc, int x, int y, int z); 
+# 15952 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuFuncSetSharedSize(CUfunction hfunc, unsigned bytes); 
+# 15984 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuParamSetSize(CUfunction hfunc, unsigned numbytes); 
+# 16017 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuParamSeti(CUfunction hfunc, int offset, unsigned value); 
+# 16050 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuParamSetf(CUfunction hfunc, int offset, float value); 
+# 16085 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuParamSetv(CUfunction hfunc, int offset, void * ptr, unsigned numbytes); 
+# 16137 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuLaunch(CUfunction f); 
+# 16191 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuLaunchGrid(CUfunction f, int grid_width, int grid_height); 
+# 16253 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuLaunchGridAsync(CUfunction f, int grid_width, int grid_height, CUstream hStream); 
+# 16278 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuParamSetTexRef(CUfunction hfunc, int texunit, CUtexref hTexRef); 
+# 16324 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphCreate(CUgraph * phGraph, unsigned flags); 
+# 16424 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddKernelNode_v2(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, const CUDA_KERNEL_NODE_PARAMS * nodeParams); 
+# 16456 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphKernelNodeGetParams_v2(CUgraphNode hNode, CUDA_KERNEL_NODE_PARAMS * nodeParams); 
+# 16479 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphKernelNodeSetParams_v2(CUgraphNode hNode, const CUDA_KERNEL_NODE_PARAMS * nodeParams); 
+# 16527 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddMemcpyNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, const CUDA_MEMCPY3D * copyParams, CUcontext ctx); 
+# 16550 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphMemcpyNodeGetParams(CUgraphNode hNode, CUDA_MEMCPY3D * nodeParams); 
+# 16573 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphMemcpyNodeSetParams(CUgraphNode hNode, const CUDA_MEMCPY3D * nodeParams); 
+# 16615 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddMemsetNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, const CUDA_MEMSET_NODE_PARAMS * memsetParams, CUcontext ctx); 
+# 16638 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphMemsetNodeGetParams(CUgraphNode hNode, CUDA_MEMSET_NODE_PARAMS * nodeParams); 
+# 16661 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphMemsetNodeSetParams(CUgraphNode hNode, const CUDA_MEMSET_NODE_PARAMS * nodeParams); 
+# 16702 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddHostNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, const CUDA_HOST_NODE_PARAMS * nodeParams); 
+# 16725 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphHostNodeGetParams(CUgraphNode hNode, CUDA_HOST_NODE_PARAMS * nodeParams); 
+# 16748 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS * nodeParams); 
+# 16788 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddChildGraphNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, CUgraph childGraph); 
+# 16815 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphChildGraphNodeGetGraph(CUgraphNode hNode, CUgraph * phGraph); 
+# 16853 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddEmptyNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies); 
+# 16894 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddEventRecordNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, CUevent event); 
+# 16919 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent * event_out); 
+# 16944 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode hNode, CUevent event); 
+# 16986 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddEventWaitNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, CUevent event); 
+# 17011 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent * event_out); 
+# 17036 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphEventWaitNodeSetEvent(CUgraphNode hNode, CUevent event); 
+# 17084 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddExternalSemaphoresSignalNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS * nodeParams); 
+# 17115 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExternalSemaphoresSignalNodeGetParams(CUgraphNode hNode, CUDA_EXT_SEM_SIGNAL_NODE_PARAMS * params_out); 
+# 17140 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExternalSemaphoresSignalNodeSetParams(CUgraphNode hNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS * nodeParams); 
+# 17188 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddExternalSemaphoresWaitNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, const CUDA_EXT_SEM_WAIT_NODE_PARAMS * nodeParams); 
+# 17219 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExternalSemaphoresWaitNodeGetParams(CUgraphNode hNode, CUDA_EXT_SEM_WAIT_NODE_PARAMS * params_out); 
+# 17244 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExternalSemaphoresWaitNodeSetParams(CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS * nodeParams); 
+# 17299 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddBatchMemOpNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams); 
+# 17327 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphBatchMemOpNodeGetParams(CUgraphNode hNode, CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams_out); 
+# 17353 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphBatchMemOpNodeSetParams(CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams); 
+# 17399 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecBatchMemOpNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams); 
+# 17473 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddMemAllocNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, CUDA_MEM_ALLOC_NODE_PARAMS * nodeParams); 
+# 17498 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphMemAllocNodeGetParams(CUgraphNode hNode, CUDA_MEM_ALLOC_NODE_PARAMS * params_out); 
+# 17555 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddMemFreeNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, ::size_t numDependencies, CUdeviceptr dptr); 
+# 17577 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphMemFreeNodeGetParams(CUgraphNode hNode, CUdeviceptr * dptr_out); 
+# 17597 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGraphMemTrim(CUdevice device); 
+# 17625 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void * value); 
+# 17650 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceSetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void * value); 
+# 17675 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphClone(CUgraph * phGraphClone, CUgraph originalGraph); 
+# 17701 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphNodeFindInClone(CUgraphNode * phNode, CUgraphNode hOriginalNode, CUgraph hClonedGraph); 
+# 17732 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphNodeGetType(CUgraphNode hNode, CUgraphNodeType * type); 
+# 17763 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphGetNodes(CUgraph hGraph, CUgraphNode * nodes, ::size_t * numNodes); 
+# 17794 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphGetRootNodes(CUgraph hGraph, CUgraphNode * rootNodes, ::size_t * numRootNodes); 
+# 17828 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphGetEdges(CUgraph hGraph, CUgraphNode * from, CUgraphNode * to, ::size_t * numEdges); 
+# 17859 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphNodeGetDependencies(CUgraphNode hNode, CUgraphNode * dependencies, ::size_t * numDependencies); 
+# 17891 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphNodeGetDependentNodes(CUgraphNode hNode, CUgraphNode * dependentNodes, ::size_t * numDependentNodes); 
+# 17920 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphAddDependencies(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, ::size_t numDependencies); 
+# 17952 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, ::size_t numDependencies); 
+# 17979 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphDestroyNode(CUgraphNode hNode); 
+# 18049 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphInstantiateWithFlags(CUgraphExec * phGraphExec, CUgraph hGraph, unsigned long long flags); 
+# 18150 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphInstantiateWithParams(CUgraphExec * phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS * instantiateParams); 
+# 18172 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecGetFlags(CUgraphExec hGraphExec, cuuint64_t * flags); 
+# 18221 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecKernelNodeSetParams_v2(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_KERNEL_NODE_PARAMS * nodeParams); 
+# 18267 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecMemcpyNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_MEMCPY3D * copyParams, CUcontext ctx); 
+# 18313 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecMemsetNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_MEMSET_NODE_PARAMS * memsetParams, CUcontext ctx); 
+# 18350 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecHostNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS * nodeParams); 
+# 18393 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecChildGraphNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, CUgraph childGraph); 
+# 18433 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecEventRecordNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event); 
+# 18473 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event); 
+# 18516 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecExternalSemaphoresSignalNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS * nodeParams); 
+# 18559 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecExternalSemaphoresWaitNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS * nodeParams); 
+# 18595 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphNodeSetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned isEnabled); 
+# 18625 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphNodeGetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned * isEnabled); 
+# 18651 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphUpload(CUgraphExec hGraphExec, CUstream hStream); 
+# 18681 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphLaunch(CUgraphExec hGraphExec, CUstream hStream); 
+# 18706 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecDestroy(CUgraphExec hGraphExec); 
+# 18726 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphDestroy(CUgraph hGraph); 
+# 18809 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphExecUpdate_v2(CUgraphExec hGraphExec, CUgraph hGraph, CUgraphExecUpdateResultInfo * resultInfo); 
+# 18829 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphKernelNodeCopyAttributes(CUgraphNode dst, CUgraphNode src); 
+# 18850 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphKernelNodeGetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, CUkernelNodeAttrValue * value_out); 
+# 18872 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphKernelNodeSetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, const CUkernelNodeAttrValue * value); 
+# 18892 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphDebugDotPrint(CUgraph hGraph, const char * path, unsigned flags); 
+# 18928 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuUserObjectCreate(CUuserObject * object_out, void * ptr, CUhostFn destroy, unsigned initialRefcount, unsigned flags); 
+# 18953 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuUserObjectRetain(CUuserObject object, unsigned count); 
+# 18981 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuUserObjectRelease(CUuserObject object, unsigned count); 
+# 19009 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned count, unsigned flags); 
+# 19034 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphReleaseUserObject(CUgraph graph, CUuserObject object, unsigned count); 
+# 19073 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuOccupancyMaxActiveBlocksPerMultiprocessor(int * numBlocks, CUfunction func, int blockSize, ::size_t dynamicSMemSize); 
+# 19115 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuOccupancyMaxActiveBlocksPerMultiprocessorWithFlags(int * numBlocks, CUfunction func, int blockSize, ::size_t dynamicSMemSize, unsigned flags); 
+# 19167 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuOccupancyMaxPotentialBlockSize(int * minGridSize, int * blockSize, CUfunction func, CUoccupancyB2DSize blockSizeToDynamicSMemSize, ::size_t dynamicSMemSize, int blockSizeLimit); 
+# 19213 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuOccupancyMaxPotentialBlockSizeWithFlags(int * minGridSize, int * blockSize, CUfunction func, CUoccupancyB2DSize blockSizeToDynamicSMemSize, ::size_t dynamicSMemSize, int blockSizeLimit, unsigned flags); 
+# 19234 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuOccupancyAvailableDynamicSMemPerBlock(::size_t * dynamicSmemSize, CUfunction func, int numBlocks, int blockSize); 
+# 19269 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuOccupancyMaxPotentialClusterSize(int * clusterSize, CUfunction func, const CUlaunchConfig * config); 
+# 19306 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuOccupancyMaxActiveClusters(int * numClusters, CUfunction func, const CUlaunchConfig * config); 
+# 19350 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetArray(CUtexref hTexRef, CUarray hArray, unsigned Flags); 
+# 19380 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetMipmappedArray(CUtexref hTexRef, CUmipmappedArray hMipmappedArray, unsigned Flags); 
+# 19426 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetAddress_v2(::size_t * ByteOffset, CUtexref hTexRef, CUdeviceptr dptr, ::size_t bytes); 
+# 19481 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetAddress2D_v3(CUtexref hTexRef, const CUDA_ARRAY_DESCRIPTOR * desc, CUdeviceptr dptr, ::size_t Pitch); 
+# 19513 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetFormat(CUtexref hTexRef, CUarray_format fmt, int NumPackedComponents); 
+# 19556 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetAddressMode(CUtexref hTexRef, int dim, CUaddress_mode am); 
+# 19592 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetFilterMode(CUtexref hTexRef, CUfilter_mode fm); 
+# 19628 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetMipmapFilterMode(CUtexref hTexRef, CUfilter_mode fm); 
+# 19657 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetMipmapLevelBias(CUtexref hTexRef, float bias); 
+# 19688 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetMipmapLevelClamp(CUtexref hTexRef, float minMipmapLevelClamp, float maxMipmapLevelClamp); 
+# 19717 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetMaxAnisotropy(CUtexref hTexRef, unsigned maxAniso); 
+# 19750 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetBorderColor(CUtexref hTexRef, float * pBorderColor); 
+# 19792 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefSetFlags(CUtexref hTexRef, unsigned Flags); 
+# 19819 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetAddress_v2(CUdeviceptr * pdptr, CUtexref hTexRef); 
+# 19846 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetArray(CUarray * phArray, CUtexref hTexRef); 
+# 19873 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetMipmappedArray(CUmipmappedArray * phMipmappedArray, CUtexref hTexRef); 
+# 19901 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetAddressMode(CUaddress_mode * pam, CUtexref hTexRef, int dim); 
+# 19927 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetFilterMode(CUfilter_mode * pfm, CUtexref hTexRef); 
+# 19955 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetFormat(CUarray_format * pFormat, int * pNumChannels, CUtexref hTexRef); 
+# 19981 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetMipmapFilterMode(CUfilter_mode * pfm, CUtexref hTexRef); 
+# 20007 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetMipmapLevelBias(float * pbias, CUtexref hTexRef); 
+# 20034 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetMipmapLevelClamp(float * pminMipmapLevelClamp, float * pmaxMipmapLevelClamp, CUtexref hTexRef); 
+# 20060 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetMaxAnisotropy(int * pmaxAniso, CUtexref hTexRef); 
+# 20089 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetBorderColor(float * pBorderColor, CUtexref hTexRef); 
+# 20114 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefGetFlags(unsigned * pFlags, CUtexref hTexRef); 
+# 20139 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefCreate(CUtexref * pTexRef); 
+# 20159 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuTexRefDestroy(CUtexref hTexRef); 
+# 20202 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuSurfRefSetArray(CUsurfref hSurfRef, CUarray hArray, unsigned Flags); 
+# 20225 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+__attribute((deprecated)) CUresult cuSurfRefGetArray(CUarray * phArray, CUsurfref hSurfRef); 
+# 20465 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuTexObjectCreate(CUtexObject * pTexObject, const CUDA_RESOURCE_DESC * pResDesc, const CUDA_TEXTURE_DESC * pTexDesc, const CUDA_RESOURCE_VIEW_DESC * pResViewDesc); 
+# 20485 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuTexObjectDestroy(CUtexObject texObject); 
+# 20506 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuTexObjectGetResourceDesc(CUDA_RESOURCE_DESC * pResDesc, CUtexObject texObject); 
+# 20527 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuTexObjectGetTextureDesc(CUDA_TEXTURE_DESC * pTexDesc, CUtexObject texObject); 
+# 20549 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuTexObjectGetResourceViewDesc(CUDA_RESOURCE_VIEW_DESC * pResViewDesc, CUtexObject texObject); 
+# 20592 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuSurfObjectCreate(CUsurfObject * pSurfObject, const CUDA_RESOURCE_DESC * pResDesc); 
+# 20612 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuSurfObjectDestroy(CUsurfObject surfObject); 
+# 20633 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuSurfObjectGetResourceDesc(CUDA_RESOURCE_DESC * pResDesc, CUsurfObject surfObject); 
+# 20790 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuTensorMapEncodeTiled(CUtensorMap * tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void * globalAddress, const cuuint64_t * globalDim, const cuuint64_t * globalStrides, const cuuint32_t * boxDim, const cuuint32_t * elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill); 
+# 20948 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuTensorMapEncodeIm2col(CUtensorMap * tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void * globalAddress, const cuuint64_t * globalDim, const cuuint64_t * globalStrides, const int * pixelBoxLowerCorner, const int * pixelBoxUpperCorner, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t * elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill); 
+# 20974 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuTensorMapReplaceAddress(CUtensorMap * tensorMap, void * globalAddress); 
+# 21017 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceCanAccessPeer(int * canAccessPeer, CUdevice dev, CUdevice peerDev); 
+# 21070 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxEnablePeerAccess(CUcontext peerContext, unsigned Flags); 
+# 21097 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCtxDisablePeerAccess(CUcontext peerContext); 
+# 21137 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuDeviceGetP2PAttribute(int * value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice); 
+# 21181 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphicsUnregisterResource(CUgraphicsResource resource); 
+# 21221 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphicsSubResourceGetMappedArray(CUarray * pArray, CUgraphicsResource resource, unsigned arrayIndex, unsigned mipLevel); 
+# 21252 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphicsResourceGetMappedMipmappedArray(CUmipmappedArray * pMipmappedArray, CUgraphicsResource resource); 
+# 21286 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphicsResourceGetMappedPointer_v2(CUdeviceptr * pDevPtr, ::size_t * pSize, CUgraphicsResource resource); 
+# 21327 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphicsResourceSetMapFlags_v2(CUgraphicsResource resource, unsigned flags); 
+# 21367 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphicsMapResources(unsigned count, CUgraphicsResource * resources, CUstream hStream); 
+# 21404 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGraphicsUnmapResources(unsigned count, CUgraphicsResource * resources, CUstream hStream); 
+# 21481 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuGetProcAddress_v2(const char * symbol, void ** pfn, int cudaVersion, cuuint64_t flags, CUdriverProcAddressQueryResult * symbolStatus); 
+# 21509 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+typedef 
+# 21501
+enum CUcoredumpSettings_enum { 
+# 21502
+CU_COREDUMP_ENABLE_ON_EXCEPTION = 1, 
+# 21503
+CU_COREDUMP_TRIGGER_HOST, 
+# 21504
+CU_COREDUMP_LIGHTWEIGHT, 
+# 21505
+CU_COREDUMP_ENABLE_USER_TRIGGER, 
+# 21506
+CU_COREDUMP_FILE, 
+# 21507
+CU_COREDUMP_PIPE, 
+# 21508
+CU_COREDUMP_MAX
+# 21509
+} CUcoredumpSettings; 
+# 21561 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCoredumpGetAttribute(CUcoredumpSettings attrib, void * value, ::size_t * size); 
+# 21606 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCoredumpGetAttributeGlobal(CUcoredumpSettings attrib, void * value, ::size_t * size); 
+# 21664 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCoredumpSetAttribute(CUcoredumpSettings attrib, void * value, ::size_t * size); 
+# 21719 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+CUresult cuCoredumpSetAttributeGlobal(CUcoredumpSettings attrib, void * value, ::size_t * size); 
+# 21723
+CUresult cuGetExportTable(const void ** ppExportTable, const CUuuid * pExportTableId); 
+# 22108 "/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda.h"
+}
+# 5 "test.cu"
 using namespace std;
-# 6
+# 7
 void add(int *a, int *b, int *c) ;
 #if 0
-# 6
-{ 
 # 7
-int tid = ((__device_builtin_variable_blockIdx.x) * (__device_builtin_variable_blockDim.x)) + (__device_builtin_variable_threadIdx.x); 
+{ 
 # 8
-if (tid < 10000000) { (c[tid]) = ((a[tid]) + (b[tid])); }  
+int tid = ((__device_builtin_variable_blockIdx.x) * (__device_builtin_variable_blockDim.x)) + (__device_builtin_variable_threadIdx.x); 
 # 9
+if (tid < 10000000) { (c[tid]) = ((a[tid]) + (b[tid])); }  
+# 10
 } 
 #endif
-# 12 "test.cu"
+# 13 "test.cu"
 int main() { 
-# 13
-int *a, *b, *c; 
 # 14
-int *d_a, *d_b, *d_c; 
+int *a, *b, *c; 
 # 15
+int *d_a, *d_b, *d_c; 
+# 16
 int size = ((10000000) * sizeof(int)); 
-# 17
-cudaMalloc((void **)(&d_a), size); 
 # 18
-cudaMalloc((void **)(&d_b), size); 
+cudaMalloc((int **)(&d_a), size); 
 # 19
-cudaMalloc((void **)(&d_c), size); 
-# 21
-a = ((int *)malloc(size)); 
+cudaMalloc((int **)(&d_b), size); 
+# 20
+cudaMalloc((int **)(&d_c), size); 
 # 22
-b = ((int *)malloc(size)); 
+a = ((int *)malloc(size)); 
 # 23
+b = ((int *)malloc(size)); 
+# 24
 c = ((int *)malloc(size)); 
-# 25
-for (int i = 0; i < 10000000; i++) { 
 # 26
-(a[i]) = i; 
-# 27
-(b[i]) = i; 
-# 28
-}  
-# 30
-cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice); 
-# 31
-cudaMemcpy(d_b, b, size, cudaMemcpyHostToDevice); 
-# 33
-(__cudaPushCallConfiguration((10000000 + 255) / 256, 256)) ? (void)0 : add(d_a, d_b, d_c); 
-# 35
-cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost); 
-# 37
 for (int i = 0; i < 10000000; i++) { 
-# 38
-(((cout << (c[i]))) << (endl)); 
-# 39
+# 27
+(a[i]) = i; 
+# 28
+(b[i]) = i; 
+# 29
 }  
-# 41
-free(a); 
+# 31
+cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice); 
+# 32
+cudaMemcpy(d_b, b, size, cudaMemcpyHostToDevice); 
+# 34
+(__cudaPushCallConfiguration((10000000 + 255) / 256, 256)) ? (void)0 : add(d_a, d_b, d_c); 
+# 36
+cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost); 
+# 38
+for (int i = 0; i < 10000000; i++) { 
+# 39
+(((cout << (c[i]))) << (endl)); 
+# 40
+}  
 # 42
-free(b); 
+free(a); 
 # 43
+free(b); 
+# 44
 free(c); 
-# 45
-cudaFree(d_a); 
 # 46
-cudaFree(d_b); 
+cudaFree(d_a); 
 # 47
+cudaFree(d_b); 
+# 48
 cudaFree(d_c); 
-# 49
+# 50
 return 0; 
-# 51
+# 52
 } 
 
 # 1 "test.cudafe1.stub.c"
