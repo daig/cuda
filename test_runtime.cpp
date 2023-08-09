@@ -33,7 +33,7 @@ int main() {
     cudaMemcpy(d_b, b, size, cudaMemcpyHostToDevice);
 
     // load the ptx file
-    ifstream ptxFile("test.ptx");
+    ifstream ptxFile("test_pretty.ptx");
     if (!ptxFile.is_open()) { cout << "Error opening file" << endl; exit(1); }
     string ptxSource((istreambuf_iterator<char>(ptxFile)), istreambuf_iterator<char>());
     //load the module
@@ -41,7 +41,7 @@ int main() {
     cuModuleLoadData(&modul, ptxSource.c_str());
     //get the kernel function
     CUfunction kernel;
-    cuModuleGetFunction(&kernel, modul, "_Z3addPiS_S_");
+    cuModuleGetFunction(&kernel, modul, "add");
 
     //launch the kernel
     void* args[] = {&d_a, &d_b, &d_c};
